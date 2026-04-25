@@ -1,0 +1,42 @@
+[
+  {
+    "user_id": "u001",
+    "name": "Sarah Chen",
+    "email": "sarah.chen@corp.com",
+    "role": "Group CFO",
+    "bu_scope": "*",
+    "region_scope": "*"
+  },
+  {
+    "user_id": "u002",
+    "name": "Marcus Weber",
+    "email": "marcus.weber@corp.com",
+    "role": "BU General Manager",
+    "bu_scope": "Electronics",
+    "region_scope": "*"
+  },
+  {
+    "user_id": "u003",
+    "name": "Priya Iyer",
+    "email": "priya.iyer@corp.com",
+    "role": "Regional Finance BP",
+    "bu_scope": "*",
+    "region_scope": "APAC"
+  },
+  {
+    "user_id": "u004",
+    "name": "Diego Alvarez",
+    "email": "diego.alvarez@corp.com",
+    "role": "BU Finance BP",
+    "bu_scope": "Automotive",
+    "region_scope": "Americas"
+  },
+  {
+    "user_id": "u005",
+    "name": "Yuki Tanaka",
+    "email": "yuki.tanaka@corp.com",
+    "role": "Analyst",
+    "bu_scope": "Healthcare",
+    "region_scope": "APAC"
+  }
+]

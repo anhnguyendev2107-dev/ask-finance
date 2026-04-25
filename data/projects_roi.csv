@@ -1,0 +1,19 @@
+project_name,bu,region,fiscal_year,status,investment_usd_mn,returns_usd_mn,roi_pct,source
+Project Orion,Electronics,APAC,FY2023,Active,51.77,55.8,7.79,PPM-System
+Project Orion,Electronics,APAC,FY2024,Active,56.38,63.54,12.69,PPM-System
+Project Orion,Electronics,APAC,FY2025,Active,67.67,80.02,18.25,PPM-System
+Project Atlas,Electronics,EMEA,FY2023,Active,40.78,45.07,10.52,PPM-System
+Project Atlas,Electronics,EMEA,FY2024,Active,44.94,50.51,12.39,PPM-System
+Project Atlas,Electronics,EMEA,FY2025,Active,51.69,60.15,16.36,PPM-System
+Project Nova,Automotive,Americas,FY2023,Active,62.61,69.7,11.32,PPM-System
+Project Nova,Automotive,Americas,FY2024,Active,77.96,82.08,5.28,PPM-System
+Project Nova,Automotive,Americas,FY2025,Active,104.71,118.17,12.85,PPM-System
+Project Helios,Automotive,EMEA,FY2023,Closed,25.64,30.1,17.41,PPM-System
+Project Helios,Automotive,EMEA,FY2024,Closed,31.49,35.39,12.38,PPM-System
+Project Helios,Automotive,EMEA,FY2025,Closed,31.8,33.91,6.61,PPM-System
+Project Vega,Healthcare,APAC,FY2023,Active,34.74,40.52,16.65,PPM-System
+Project Vega,Healthcare,APAC,FY2024,Active,33.5,37.23,11.13,PPM-System
+Project Vega,Healthcare,APAC,FY2025,Active,36.47,38.33,5.08,PPM-System
+Project Pulsar,Healthcare,Americas,FY2023,On Hold,59.83,69.37,15.94,PPM-System
+Project Pulsar,Healthcare,Americas,FY2024,On Hold,59.91,68.05,13.58,PPM-System
+Project Pulsar,Healthcare,Americas,FY2025,On Hold,72.12,75.75,5.03,PPM-System

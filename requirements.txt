@@ -1,0 +1,15 @@
+# Core
+pandas>=2.0
+openpyxl>=3.1          # Excel export
+matplotlib>=3.7         # chart generation
+python-pptx>=0.6        # (optional) PowerPoint export
+
+# LLM provider — pick one
+anthropic>=0.40         # Claude (default)
+# openai>=1.0           # uncomment if using OpenAI
+
+# Web UI (optional)
+streamlit>=1.30
+
+# Dev
+pytest>=7

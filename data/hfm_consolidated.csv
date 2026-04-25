@@ -1,0 +1,1189 @@
+period,fiscal_year,fiscal_quarter,entity,bu,account_code,account_name,account_category,amount_usd_mn,source
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,82.04,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,35.987,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-61.793,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.258,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.48,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.462,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.198,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.853,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.849,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-5.791,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.589,HFM
+2023-01,FY2023,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.047,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,114.131,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,49.504,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-86.465,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-12.845,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-4.9,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-6.679,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.621,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-3.853,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.692,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.371,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-4.963,HFM
+2023-01,FY2023,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-9.943,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,58.813,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,25.219,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-44.389,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-6.291,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.413,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.292,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.826,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-1.913,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.317,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.168,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.472,HFM
+2023-01,FY2023,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.24,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,83.042,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,34.373,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-65.204,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.234,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.478,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.76,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.219,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.851,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.947,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-5.871,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.576,HFM
+2023-02,FY2023,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.232,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,111.499,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,48.72,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-90.246,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.222,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-4.996,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-6.53,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.676,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.052,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.584,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.445,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.052,HFM
+2023-02,FY2023,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.29,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,55.335,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,23.952,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-45.809,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-6.416,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.514,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.198,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.808,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-1.933,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.35,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.171,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.425,HFM
+2023-02,FY2023,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.24,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,80.21,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,36.609,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-63.39,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.804,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.64,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.901,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.213,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.871,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.865,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.087,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.657,HFM
+2023-03,FY2023,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.314,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,118.194,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,51.703,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-90.836,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.82,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.19,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-6.566,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.674,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-3.844,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.613,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.413,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.112,HFM
+2023-03,FY2023,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.724,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,59.869,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,25.821,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-46.581,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-6.745,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.551,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.346,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.84,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.044,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.383,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.098,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.435,HFM
+2023-03,FY2023,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.284,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,82.37,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,35.263,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-66.455,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.561,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.6,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-4.85,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.171,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.916,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.893,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-5.953,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.682,HFM
+2023-04,FY2023,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.335,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,115.003,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,49.972,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-89.595,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.985,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.116,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-6.846,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.688,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.079,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.673,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.641,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-4.995,HFM
+2023-04,FY2023,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.324,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,57.644,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,24.47,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-46.486,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-6.713,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.542,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.269,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.826,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-1.981,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.334,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.177,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.477,HFM
+2023-04,FY2023,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.387,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,85.852,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,38.162,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-69.033,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.164,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.526,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-4.96,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.218,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.031,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.975,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.177,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.805,HFM
+2023-05,FY2023,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.758,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,118.182,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,53.095,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-97.561,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.578,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.155,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-6.732,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.769,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.217,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.713,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.772,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.116,HFM
+2023-05,FY2023,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.315,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,61.86,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,25.061,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-47.156,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.097,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.501,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.551,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.859,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-1.974,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.323,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.34,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.626,HFM
+2023-05,FY2023,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.509,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,86.274,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,36.021,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-68.406,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.081,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.862,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.069,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.255,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.081,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.023,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.028,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.708,HFM
+2023-06,FY2023,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.646,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,117.51,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,50.223,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-97.727,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.953,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.239,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-6.793,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.702,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.129,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.807,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.633,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.007,HFM
+2023-06,FY2023,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.0,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,60.929,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,26.335,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-48.192,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.086,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.622,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.528,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.838,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.155,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.345,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.44,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.563,HFM
+2023-06,FY2023,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.246,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,89.824,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,37.508,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-68.529,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.182,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.762,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.04,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.22,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.989,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.058,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.306,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.908,HFM
+2023-07,FY2023,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.63,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,124.887,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.523,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-99.037,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.331,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.224,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.29,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.767,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.241,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.73,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.447,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.318,HFM
+2023-07,FY2023,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.027,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,63.772,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,25.975,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-49.337,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.264,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.606,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.494,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.89,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.113,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.369,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.3,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.709,HFM
+2023-07,FY2023,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.363,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,86.843,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.108,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-71.992,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.471,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.951,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.294,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.269,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.067,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.003,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.145,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.696,HFM
+2023-08,FY2023,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.1,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,124.633,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,52.745,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-95.111,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.436,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.176,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.197,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.839,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.215,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.84,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.994,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.264,HFM
+2023-08,FY2023,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.214,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,62.707,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,26.445,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-48.293,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.088,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.568,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.492,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.871,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.18,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.419,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.577,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.595,HFM
+2023-08,FY2023,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.673,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,93.001,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,38.573,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-70.126,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.156,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.885,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.025,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.301,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.18,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.123,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.262,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.881,HFM
+2023-09,FY2023,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.907,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,130.287,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,52.328,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-95.926,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.887,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.419,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-6.951,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.817,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.3,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.91,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.321,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.439,HFM
+2023-09,FY2023,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.323,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,65.712,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.021,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-50.743,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.144,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.648,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.689,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.92,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.13,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.44,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.517,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.686,HFM
+2023-09,FY2023,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.643,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,92.619,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,40.275,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.599,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.544,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.814,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.23,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.301,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.054,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.165,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.614,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.065,HFM
+2023-10,FY2023,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.317,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,127.832,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.238,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-98.31,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.614,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.294,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-7.238,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-1.762,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.286,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.021,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.041,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.472,HFM
+2023-10,FY2023,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.387,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,61.678,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.483,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-49.578,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.434,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.748,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.754,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.939,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.153,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.468,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.452,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.777,HFM
+2023-10,FY2023,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.653,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,93.722,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,40.745,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-72.844,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.477,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.097,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.298,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.307,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.268,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.114,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.604,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.001,HFM
+2023-11,FY2023,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.268,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,125.878,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.066,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-98.4,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.984,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.427,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-7.221,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-1.831,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.521,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.872,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.059,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.693,HFM
+2023-11,FY2023,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.777,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,64.715,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.729,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-49.744,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.206,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.852,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.562,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.892,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.235,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.441,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.677,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.675,HFM
+2023-11,FY2023,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.82,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,90.414,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.399,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-71.771,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.106,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.05,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.384,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.288,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.271,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.17,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.58,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.884,HFM
+2023-12,FY2023,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.336,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,136.415,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,57.899,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-100.401,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.395,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.67,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-7.676,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-1.923,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.385,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.038,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.198,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.726,HFM
+2023-12,FY2023,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.571,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,65.377,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.327,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-50.445,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.431,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.724,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.66,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.964,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.251,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.49,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.556,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.721,HFM
+2023-12,FY2023,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.848,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,86.662,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,35.446,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-69.005,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.817,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.568,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.9,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.19,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.969,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.014,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.329,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.761,HFM
+2024-01,FY2024,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.759,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,120.436,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,50.99,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-91.011,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.773,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.041,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-7.036,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.757,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.083,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.768,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.753,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.26,HFM
+2024-01,FY2024,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.903,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,58.177,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,25.008,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-47.144,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-6.723,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.65,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.375,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.885,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.046,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.34,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.366,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.636,HFM
+2024-01,FY2024,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.401,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,84.438,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,35.857,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-69.283,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.104,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.678,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.922,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.21,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.023,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.952,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.398,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.71,HFM
+2024-02,FY2024,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.693,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,119.752,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,53.016,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-97.765,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.839,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.345,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-6.958,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.724,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.199,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.732,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.575,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.161,HFM
+2024-02,FY2024,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.067,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,62.121,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,26.872,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-48.516,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.106,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.602,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.54,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.847,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.043,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.383,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.299,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.624,HFM
+2024-02,FY2024,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.53,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,89.789,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,36.827,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-71.98,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-9.695,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.662,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-4.904,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.305,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.013,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-1.949,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.169,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.658,HFM
+2024-03,FY2024,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.595,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,122.514,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,55.051,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-98.046,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.156,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.389,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-7.121,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.83,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.348,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.858,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.79,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.173,HFM
+2024-03,FY2024,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.18,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,63.333,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,26.045,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-46.768,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.122,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.653,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.457,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.86,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.041,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.384,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.24,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.577,HFM
+2024-03,FY2024,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.74,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,91.558,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,37.93,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-69.774,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.305,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.843,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.214,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.235,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.97,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.012,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.566,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.965,HFM
+2024-04,FY2024,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-7.899,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,130.023,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,52.772,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-99.348,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-13.979,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.558,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.207,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.757,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.267,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.776,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.649,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.285,HFM
+2024-04,FY2024,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.595,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,64.207,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.848,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-50.737,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.344,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.703,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.638,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.929,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.16,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.464,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.57,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.786,HFM
+2024-04,FY2024,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.579,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,90.496,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.176,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-68.631,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.057,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.756,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.243,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.348,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.157,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.03,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.389,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.032,HFM
+2024-05,FY2024,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.116,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,122.109,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,55.916,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-97.848,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.052,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.523,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.449,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.754,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.508,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.9,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.972,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.619,HFM
+2024-05,FY2024,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.138,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,65.82,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.633,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-51.567,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.262,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.658,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.7,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.935,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.128,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.418,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.448,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.749,HFM
+2024-05,FY2024,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.518,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,89.113,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,40.758,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.309,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.653,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.979,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.369,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.319,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.039,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.1,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.635,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.941,HFM
+2024-06,FY2024,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.534,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,132.902,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,56.833,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-101.134,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.292,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.704,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.231,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.799,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.443,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.839,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.421,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.511,HFM
+2024-06,FY2024,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.539,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,64.418,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.368,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-51.359,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.169,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.865,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.739,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.917,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.242,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.415,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.494,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.778,HFM
+2024-06,FY2024,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.67,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,94.076,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.19,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.54,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.431,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.987,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.376,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.318,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.196,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.082,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.767,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.955,HFM
+2024-07,FY2024,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.561,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,128.228,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.508,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-99.532,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.008,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.473,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.22,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.83,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.381,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.967,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.235,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.436,HFM
+2024-07,FY2024,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.082,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,63.435,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.654,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-49.952,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.459,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.908,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.834,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.934,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.277,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.526,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.587,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.811,HFM
+2024-07,FY2024,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.859,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,93.694,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,41.101,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-71.607,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.067,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.041,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.454,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.344,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.196,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.135,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.78,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.188,HFM
+2024-08,FY2024,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.271,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,127.166,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.96,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-106.961,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.674,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.531,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.603,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.912,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.416,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.091,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.337,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.746,HFM
+2024-08,FY2024,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.796,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,67.374,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,29.222,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-51.46,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.428,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.864,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.671,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.919,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.323,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.492,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.773,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.85,HFM
+2024-08,FY2024,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.069,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,92.407,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.9,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.549,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.776,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.032,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.366,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.383,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.221,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.178,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-7.033,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.056,HFM
+2024-09,FY2024,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.603,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,138.953,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,57.018,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-102.595,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.726,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.846,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.754,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.981,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.667,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.959,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.314,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.559,HFM
+2024-09,FY2024,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.544,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,69.011,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.818,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-50.634,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.592,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.932,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.7,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.939,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.233,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.55,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.932,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.827,HFM
+2024-09,FY2024,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.86,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,95.242,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,41.955,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.901,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.376,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.997,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.61,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.424,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.276,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.211,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-7.186,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.167,HFM
+2024-10,FY2024,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.496,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,135.082,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,60.333,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-108.292,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.106,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.86,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-7.834,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-1.959,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.676,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.107,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.8,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.726,HFM
+2024-10,FY2024,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.966,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,68.056,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,29.783,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-53.055,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.67,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.852,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.816,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.93,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.385,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.594,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.785,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.9,HFM
+2024-10,FY2024,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.819,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,101.456,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,43.565,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-76.97,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.776,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.183,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.515,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.372,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.232,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.221,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.961,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.226,HFM
+2024-11,FY2024,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.689,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,133.697,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,60.002,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-107.004,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.55,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.777,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-7.803,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-1.922,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.811,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.244,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-10.056,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.975,HFM
+2024-11,FY2024,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.056,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,70.034,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,30.17,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-53.602,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-8.073,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.869,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.86,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.992,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.378,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.542,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.955,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.871,HFM
+2024-11,FY2024,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.898,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,95.788,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,42.706,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-76.114,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.995,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.18,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6300,R&D,Opex,-5.776,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6400,Travel,Opex,-1.445,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.334,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.208,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,7100,Depreciation,D&A,-7.094,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.205,HFM
+2024-12,FY2024,Q4,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.738,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,142.449,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,61.996,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-108.988,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-16.27,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.881,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6300,R&D,Opex,-8.168,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6400,Travel,Opex,-2.059,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.6,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.25,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.596,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.948,HFM
+2024-12,FY2024,Q4,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.115,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,71.459,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,30.567,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-56.088,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.709,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6200,Marketing,Opex,-3.045,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.895,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6400,Travel,Opex,-1.015,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.374,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.62,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.783,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.972,HFM
+2024-12,FY2024,Q4,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.345,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,90.888,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,40.386,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-71.137,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.52,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.83,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-5.111,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.31,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-2.997,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.147,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.492,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.812,HFM
+2025-01,FY2025,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.191,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,123.967,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,56.129,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-102.712,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.19,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.276,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-7.336,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.789,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.239,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.852,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.797,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.57,HFM
+2025-01,FY2025,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-10.896,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,61.187,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,27.838,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-49.805,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.315,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.694,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.51,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.883,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.106,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.466,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.693,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.83,HFM
+2025-01,FY2025,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.728,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,88.79,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.898,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-73.475,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.763,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.826,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-5.146,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.365,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.228,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.147,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.734,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.925,HFM
+2025-02,FY2025,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.015,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,130.794,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,54.592,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-98.276,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.195,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.515,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-7.326,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.81,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.487,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-2.872,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-8.972,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.455,HFM
+2025-02,FY2025,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.718,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,63.264,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.341,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-52.295,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.395,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.666,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.58,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.905,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.167,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.457,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.418,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.791,HFM
+2025-02,FY2025,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.696,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,90.979,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,38.457,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-75.422,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.902,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6200,Marketing,Opex,-3.916,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6300,R&D,Opex,-5.427,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6400,Travel,Opex,-1.35,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.21,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.114,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.679,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.999,HFM
+2025-03,FY2025,Q1,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.367,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,131.84,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,55.202,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-103.817,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-14.467,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.61,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6300,R&D,Opex,-7.207,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6400,Travel,Opex,-1.917,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.347,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.076,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.11,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.593,HFM
+2025-03,FY2025,Q1,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.291,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,65.7,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.751,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-51.979,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.482,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.845,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.66,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.923,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.259,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.442,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.827,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.735,HFM
+2025-03,FY2025,Q1,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.829,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,97.574,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,39.19,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-76.137,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.434,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.074,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.597,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.343,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.21,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.199,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.934,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-3.979,HFM
+2025-04,FY2025,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.138,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,127.92,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,55.883,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-107.788,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.698,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.494,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.706,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.897,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.429,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.034,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.272,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.734,HFM
+2025-04,FY2025,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.524,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,67.557,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.194,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-50.401,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.654,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.806,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.772,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.959,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.341,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.474,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.61,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.816,HFM
+2025-04,FY2025,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-5.837,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,93.297,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,42.748,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-75.022,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.833,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.05,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.697,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.351,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.255,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.239,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.813,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.185,HFM
+2025-05,FY2025,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.639,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,134.966,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,56.235,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-107.755,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.87,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.642,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.957,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-1.91,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.566,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.125,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.963,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.799,HFM
+2025-05,FY2025,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.007,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,69.794,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.32,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-51.913,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.503,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.959,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.69,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.984,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.337,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.507,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.817,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.891,HFM
+2025-05,FY2025,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.199,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,94.531,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,40.123,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-75.502,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-10.789,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.122,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6300,R&D,Opex,-5.592,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6400,Travel,Opex,-1.359,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.416,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.15,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.888,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.306,HFM
+2025-06,FY2025,Q2,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.843,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,138.537,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,59.696,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-104.139,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.96,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.921,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6300,R&D,Opex,-7.825,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6400,Travel,Opex,-2.008,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.702,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.061,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.901,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.869,HFM
+2025-06,FY2025,Q2,GRP-AUTO,Automotive,9100,Income Tax,Tax,-11.742,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,65.634,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,29.797,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-52.818,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.975,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.897,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6300,R&D,Opex,-4.003,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6400,Travel,Opex,-1.001,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.282,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.574,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.901,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.802,HFM
+2025-06,FY2025,Q2,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.211,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,97.586,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,41.56,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-74.561,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.295,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.104,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.63,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.376,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.256,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.293,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-6.976,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.204,HFM
+2025-07,FY2025,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-8.863,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,137.969,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,57.793,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-106.541,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-15.629,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.737,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.618,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-1.982,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.558,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.127,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.524,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-5.912,HFM
+2025-07,FY2025,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.584,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,66.919,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,28.69,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-54.439,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.873,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.991,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.845,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.994,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.409,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.544,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.757,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-3.021,HFM
+2025-07,FY2025,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.07,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,103.195,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,41.371,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-79.498,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.337,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.226,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.622,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.437,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.292,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.246,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-7.407,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.317,HFM
+2025-08,FY2025,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-9.261,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,139.086,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,58.188,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-105.792,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-16.376,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.845,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-7.904,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-2.037,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.926,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.095,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-9.625,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-6.204,HFM
+2025-08,FY2025,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.902,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,71.927,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,30.709,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-52.759,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-8.108,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-2.901,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-3.976,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.96,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.34,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.602,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-4.872,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-3.0,HFM
+2025-08,FY2025,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.118,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,4000,Product Revenue,Revenue,100.967,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,4100,Service Revenue,Revenue,44.128,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,5000,Cost of Goods Sold,COGS,-77.16,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6100,Salaries & Wages,Opex,-11.739,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6200,Marketing,Opex,-4.166,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6300,R&D,Opex,-5.816,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6400,Travel,Opex,-1.463,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6500,IT & Infrastructure,Opex,-3.34,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,6600,General & Admin,Opex,-2.25,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,7100,Depreciation,D&A,-7.097,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,8100,Interest Expense,Finance,-4.433,HFM
+2025-09,FY2025,Q3,GRP-ELEC,Electronics,9100,Income Tax,Tax,-9.112,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,4000,Product Revenue,Revenue,136.486,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,4100,Service Revenue,Revenue,61.414,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,5000,Cost of Goods Sold,COGS,-106.841,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6100,Salaries & Wages,Opex,-16.033,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6200,Marketing,Opex,-5.955,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6300,R&D,Opex,-8.316,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6400,Travel,Opex,-2.048,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6500,IT & Infrastructure,Opex,-4.994,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,6600,General & Admin,Opex,-3.111,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,7100,Depreciation,D&A,-10.408,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,8100,Interest Expense,Finance,-6.139,HFM
+2025-09,FY2025,Q3,GRP-AUTO,Automotive,9100,Income Tax,Tax,-12.366,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,4000,Product Revenue,Revenue,70.098,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,4100,Service Revenue,Revenue,31.488,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,5000,Cost of Goods Sold,COGS,-53.826,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6100,Salaries & Wages,Opex,-7.969,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6200,Marketing,Opex,-3.122,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6300,R&D,Opex,-4.054,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6400,Travel,Opex,-0.986,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6500,IT & Infrastructure,Opex,-2.427,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,6600,General & Admin,Opex,-1.612,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,7100,Depreciation,D&A,-5.228,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,8100,Interest Expense,Finance,-2.917,HFM
+2025-09,FY2025,Q3,GRP-HEAL,Healthcare,9100,Income Tax,Tax,-6.191,HFM
