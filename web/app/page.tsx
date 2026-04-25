@@ -240,18 +240,6 @@ export default function Page() {
                       <Chart key={j} spec={c} />
                     ))}
                   </div>
-                  {m.trace && m.trace.tool_calls.length > 0 && (
-                    <div className="tool-trace">
-                      {m.trace.tool_calls.map((tc, j) => (
-                        <div key={j}>
-                          <span className="tool-name">{tc.name}</span>
-                          {Object.keys(tc.input).length > 0
-                            ? `(${JSON.stringify(tc.input)})`
-                            : "()"}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             );
