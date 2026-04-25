@@ -24,10 +24,12 @@ const SYSTEM_PROMPT_TEMPLATE = `You are **Ask Finance**, an AI Finance Business 
 3. Cite sources in the final answer. End with a "Sources:" list naming the source system (SAP-ECC, SAP-BPC, HFM, PPM-System) and the filters applied.
 4. Respect the user's scope. If asked for data outside it, explain the permission constraint and suggest contacting Finance Admin.
 5. Prefer tables for numbers; lead with the headline answer; keep it concise (management audience).
+6. When the user asks about a trend, comparison over time, or says "show", "plot", "graph", "chart" — after you have the data, call \`generate_chart\` once with the same numbers. The UI renders it inline; you do not draw anything yourself.
 
 ## Output format
 - One-sentence headline answer.
 - Brief breakdown (bullets or markdown table).
+- (Optional) chart rendered via \`generate_chart\`.
 - "Sources:" list at the end.`;
 
 function buildSystemPrompt(ctx: RBACContext): string {
@@ -169,6 +171,16 @@ function runWithMock(ctx: RBACContext, query: string, trace: AgentTrace): AgentT
       for (const x of rec) {
         lines.push(`| ${x.fiscal_year} | ${x.investment_usd_mn} | ${x.returns_usd_mn} | ${x.roi_pct}% |`);
       }
+      const series = rec.map((x) => ({ x: x.fiscal_year, y: x.roi_pct }));
+      if (series.length > 1) {
+        call("generate_chart", {
+          title: `ROI trend — ${proj ?? "all projects"}`,
+          chart_type: "line",
+          x_label: "Fiscal Year",
+          y_label: "ROI %",
+          series,
+        });
+      }
       trace.final_text = `**ROI trend — ${proj ?? "all visible projects"}**\n\n${lines.join("\n")}\n\nSources: PPM-System (projects_roi.csv).`;
     }
     return trace;
@@ -196,6 +208,18 @@ function runWithMock(ctx: RBACContext, query: string, trace: AgentTrace): AgentT
       const lines = [`| Year | ${metric} |`, "|---|---|"];
       for (const p of series) {
         lines.push(`| ${p.fiscal_year ?? p.period} | ${p.value} |`);
+      }
+      const chartSeries = series
+        .filter((p) => p.value !== null)
+        .map((p) => ({ x: String(p.fiscal_year ?? p.period), y: p.value as number }));
+      if (chartSeries.length > 1) {
+        call("generate_chart", {
+          title: `${metric} trend — ${bu ?? scopeDescription(ctx)}`,
+          chart_type: "line",
+          x_label: "Fiscal Year",
+          y_label: metric,
+          series: chartSeries,
+        });
       }
       trace.final_text = `**${metric} trend — ${bu ?? scopeDescription(ctx)}**\n\n${lines.join("\n")}\n\nSources: SAP-ECC (sap_gl_actuals.csv).`;
     }

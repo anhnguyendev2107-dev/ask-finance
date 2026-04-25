@@ -256,6 +256,31 @@ export function toolLookupGlossary(
   };
 }
 
+export function toolGenerateChart(
+  _ctx: RBACContext,
+  args: {
+    title: string;
+    chart_type?: "line" | "bar";
+    x_label: string;
+    y_label: string;
+    series: { x: string | number; y: number }[];
+  },
+): Record<string, unknown> {
+  if (!args.series || args.series.length === 0) {
+    return { error: "No series data provided." };
+  }
+  return {
+    chart: {
+      title: args.title,
+      type: args.chart_type ?? "line",
+      x_label: args.x_label,
+      y_label: args.y_label,
+      series: args.series,
+    },
+    points: args.series.length,
+  };
+}
+
 export function toolDescribeDataScope(ctx: RBACContext): Record<string, unknown> {
   return {
     user: { name: ctx.name, role: ctx.role, scope: scopeDescription(ctx) },
@@ -350,6 +375,33 @@ export const TOOL_SCHEMAS = [
       required: [],
     },
   },
+  {
+    name: "generate_chart",
+    description:
+      "Render a chart inline in the response. Call AFTER you have the data from get_metric_trend or get_project_roi (or any other source). The chart is rendered as SVG by the UI; you do not need to draw anything yourself. Prefer line charts for time series, bar charts for categorical comparisons.",
+    input_schema: {
+      type: "object",
+      properties: {
+        title: { type: "string", description: "Chart title shown above the plot." },
+        chart_type: { type: "string", enum: ["line", "bar"], description: "Default: line." },
+        x_label: { type: "string", description: "Label for the x axis." },
+        y_label: { type: "string", description: "Label for the y axis." },
+        series: {
+          type: "array",
+          description: "Array of {x, y} points. x can be a year/period label; y must be a number.",
+          items: {
+            type: "object",
+            properties: {
+              x: { type: "string" },
+              y: { type: "number" },
+            },
+            required: ["x", "y"],
+          },
+        },
+      },
+      required: ["title", "x_label", "y_label", "series"],
+    },
+  },
 ] as const;
 
 type ToolFn = (ctx: RBACContext, args: Record<string, unknown>) => Record<string, unknown>;
@@ -366,6 +418,8 @@ export const TOOL_DISPATCH: Record<string, ToolFn> = {
     ),
   get_project_roi: (ctx, a) =>
     toolGetProjectRoi(ctx, a as Parameters<typeof toolGetProjectRoi>[1]),
+  generate_chart: (ctx, a) =>
+    toolGenerateChart(ctx, a as Parameters<typeof toolGenerateChart>[1]),
 };
 
 export function runTool(
