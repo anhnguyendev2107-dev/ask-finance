@@ -4,27 +4,27 @@ The prototype validates the architecture against mock data and a single LLM prov
 
 ```mermaid
 gantt
-  title Roadmap — phased rollout
-  dateFormat  YYYY-MM
-  axisFormat  %Y-%m
+  title Roadmap - phased rollout
+  dateFormat YYYY-MM
+  axisFormat %Y-%m
   section Phase 0
-  Prototype hardened (this build)        :done,    p0, 2026-04, 1M
-  section Phase 1 — Pilot
-  Real connectors (SAP/HFM/PPM)          :active,  c1, 2026-05, 2M
-  Multi-provider failover                :         c2, 2026-05, 1M
-  Output guardrails                      :         c3, 2026-06, 1M
-  Eval harness wired to CI               :         c4, 2026-05, 1M
-  Pilot: 1 BU, 2 roles                   :crit,    c5, after c1, 1M
-  section Phase 2 — Scale
-  Hybrid retrieval over knowledge        :         s1, 2026-08, 2M
-  Dimensional RBAC                       :         s2, 2026-09, 2M
-  Streaming + per-tool routing           :         s3, 2026-09, 1M
-  Cost guardrails per BU                 :         s4, 2026-10, 1M
-  GA: 5 BUs, 4 roles                     :crit,    s5, 2026-11, 2M
-  section Phase 3 — Differentiate
-  Driver-tree analysis                   :         d1, 2027-01, 2M
-  Anomaly explainer                      :         d2, 2027-02, 2M
-  Memory + personalisation               :         d3, 2027-03, 2M
+  Prototype hardened (this build)         :done,    p0, 2026-04, 1M
+  section Phase 1 - Pilot
+  Real connectors (SAP/HFM/PPM)           :active,  c1, 2026-05, 2M
+  Multi-provider failover                 :         c2, 2026-05, 1M
+  Output guardrails                       :         c3, 2026-06, 1M
+  Eval harness wired to CI                :         c4, 2026-05, 1M
+  Pilot - 1 BU and 2 roles                :crit,    c5, after c1, 1M
+  section Phase 2 - Scale
+  Hybrid retrieval over knowledge         :         s1, 2026-08, 2M
+  Dimensional RBAC                        :         s2, 2026-09, 2M
+  Streaming + per-tool routing            :         s3, 2026-09, 1M
+  Cost guardrails per BU                  :         s4, 2026-10, 1M
+  GA - 5 BUs and 4 roles                  :crit,    s5, 2026-11, 2M
+  section Phase 3 - Differentiate
+  Driver-tree analysis                    :         d1, 2027-01, 2M
+  Anomaly explainer                       :         d2, 2027-02, 2M
+  Memory + personalisation                :         d3, 2027-03, 2M
 ```
 
 The dates are illustrative — the gates between phases (see Evaluation: launch criteria) are absolute. A phase ships when its gates clear, not when its sprint ends.
@@ -265,15 +265,15 @@ Today's agent does point questions well. It cannot yet answer *"Why did EBIT mar
 
 ```mermaid
 flowchart TD
-  Q[Why did margin drop in Auto-EMEA Q2?]
+  Q["Why did margin drop in Auto-EMEA Q2?"]
   Plan["Planner<br/>decompose into drivers"]
-  Q1["Sub-q 1<br/>Revenue Δ vs LY"]
-  Q2["Sub-q 2<br/>COGS Δ vs LY by category"]
-  Q3["Sub-q 3<br/>Opex Δ vs LY by category"]
+  Q1["Sub-q 1<br/>Revenue change vs LY"]
+  Q2["Sub-q 2<br/>COGS change vs LY by category"]
+  Q3["Sub-q 3<br/>Opex change vs LY by category"]
   Q4["Sub-q 4<br/>FX impact"]
   Q5["Sub-q 5<br/>volume vs price decomposition"]
-  Synth[Contribution-weighted synthesis]
-  Narr[Narrative + waterfall chart]
+  Synth["Contribution-weighted synthesis"]
+  Narr["Narrative + waterfall chart"]
 
   Q --> Plan
   Plan --> Q1

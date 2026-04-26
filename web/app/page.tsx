@@ -546,6 +546,23 @@ export default function Page() {
         </div>
 
         <div className="composer">
+          {activeUser && (
+            <div className="examples-strip" role="list" aria-label="Suggested questions">
+              {(EXAMPLES_BY_ROLE[activeUser.role] ?? []).map((ex) => (
+                <button
+                  key={ex}
+                  type="button"
+                  role="listitem"
+                  className="example-pill"
+                  onClick={() => void send(ex)}
+                  disabled={busy}
+                  title={ex}
+                >
+                  {ex}
+                </button>
+              ))}
+            </div>
+          )}
           <div className={`input-shell${input.trim() ? " has-input" : ""}`}>
             <textarea
               value={input}
