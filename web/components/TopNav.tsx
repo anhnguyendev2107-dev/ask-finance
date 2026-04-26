@@ -17,21 +17,35 @@ export function TopNav() {
     <header className="topnav">
       <Link className="brand-link" href="/">
         <span className="brand-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
             <defs>
-              <linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#6c8cff" />
-                <stop offset="1" stopColor="#b685ff" />
+              <linearGradient id="bm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#6c8cff" />
+                <stop offset="55%" stopColor="#8a7cff" />
+                <stop offset="100%" stopColor="#b685ff" />
+              </linearGradient>
+              <linearGradient id="bm-shine" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.22" />
+                <stop offset="55%" stopColor="#ffffff" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="bm-line" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="#ffffff" />
               </linearGradient>
             </defs>
+            <rect x="0" y="0" width="32" height="32" rx="9" fill="url(#bm-bg)" />
+            <rect x="0" y="0" width="32" height="32" rx="9" fill="url(#bm-shine)" />
+            <line x1="6" y1="23" x2="26" y2="23" stroke="#ffffff" strokeOpacity="0.32" strokeWidth="1" strokeLinecap="round" />
             <path
-              d="M3 17 12 4l9 13M7.5 12.5h9M3 21h18"
-              stroke="url(#bm)"
+              d="M6 20 L11 16 L16 18 L21 11 L26 8"
+              fill="none"
+              stroke="url(#bm-line)"
               strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              fill="none"
             />
+            <circle cx="26" cy="8" r="3" fill="#ffffff" fillOpacity="0.25" />
+            <circle cx="26" cy="8" r="2" fill="#ffffff" />
           </svg>
         </span>
         <span className="brand-name">Ask Finance</span>

@@ -240,24 +240,71 @@ button:disabled {
 }
 
 .user-picker-trigger {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   width: 100%;
-  padding: 10px 11px;
-  background: var(--panel-2);
+  padding: 10px 12px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 60%),
+    var(--panel-2);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 11px;
   color: var(--text);
   font: inherit;
   text-align: left;
-  transition: border-color 0.15s, background 0.15s;
+  overflow: hidden;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.05s ease;
 }
 
-.user-picker-trigger:hover,
+/* Subtle vertical accent stripe on the left edge */
+.user-picker-trigger::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 50%, #b685ff));
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.user-picker-trigger:hover {
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 60%),
+    var(--panel-2);
+}
+
 .user-picker-trigger.is-open {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
+
+.user-picker-trigger.is-open::before,
+.user-picker-trigger:hover::before {
+  opacity: 1;
+}
+
+.user-picker-trigger:active:not(.is-open) {
+  transform: translateY(0.5px);
+}
+
+.user-picker-trigger > .avatar {
+  /* Soft glow ring around the persona avatar */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 4px 10px -2px rgba(13, 19, 48, 0.35);
+  transition: box-shadow 0.18s ease;
+}
+
+.user-picker-trigger:hover > .avatar {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 6px 14px -2px rgba(13, 19, 48, 0.45);
 }
 
 .user-picker-trigger.user-picker-empty {
@@ -283,9 +330,24 @@ button:disabled {
 }
 
 .user-picker-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   color: var(--muted);
-  margin-top: 1px;
+  margin-top: 2px;
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  letter-spacing: 0.01em;
+}
+
+.user-picker-role::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--good), color-mix(in srgb, var(--good) 55%, var(--accent)));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--good) 50%, transparent);
 }
 
 .user-picker-chevron {
@@ -1639,20 +1701,41 @@ button:disabled {
   text-decoration: none;
   color: var(--text);
   font-weight: 700;
-  font-size: 14.5px;
-  letter-spacing: -0.01em;
+  font-size: 15px;
+  letter-spacing: -0.018em;
+  transition: opacity 0.12s ease;
+}
+
+.brand-link:hover {
+  opacity: 0.92;
 }
 
 .brand-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
-  background:
-    linear-gradient(135deg, rgba(108, 140, 255, 0.18), rgba(182, 133, 255, 0.18)),
-    var(--panel-2);
-  border: 1px solid var(--border);
+  border-radius: 9px;
+  /* The SVG already paints its own gradient + shine + bars. We only add
+     ambient depth around the mark — drop shadow + a 1 px ring on top. */
+  box-shadow:
+    0 1px 2px rgba(13, 19, 48, 0.35),
+    0 6px 14px -4px rgba(108, 140, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.brand-link:hover .brand-mark {
+  transform: translateY(-0.5px);
+  box-shadow:
+    0 2px 4px rgba(13, 19, 48, 0.4),
+    0 10px 20px -4px rgba(108, 140, 255, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.brand-mark svg {
+  display: block;
+  border-radius: inherit;
 }
 
 .brand-name {
@@ -1660,6 +1743,14 @@ button:disabled {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  white-space: nowrap;
+}
+
+:root[data-theme="light"] .brand-mark {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.08),
+    0 8px 18px -6px rgba(99, 102, 241, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .topnav-tabs {
