@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { isValidElement, type ReactNode } from "react";
 import { Mermaid } from "./Mermaid";
+import { PrintButton } from "./PrintButton";
 
 interface Props {
   slug: "architecture" | "evaluation" | "future";
@@ -40,7 +41,10 @@ export function DocPage({ slug, eyebrow, title, subtitle }: Props) {
 
       <main className="doc-main">
         <div className="doc-container">
-          <div className="doc-eyebrow">{eyebrow}</div>
+          <div className="doc-header-row">
+            <div className="doc-eyebrow">{eyebrow}</div>
+            <PrintButton />
+          </div>
           <h1 className="doc-title">{title}</h1>
           <p className="doc-subtitle">{subtitle}</p>
 

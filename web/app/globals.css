@@ -1062,6 +1062,14 @@ button:disabled {
   }
 }
 
+.doc-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
 .doc-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1075,6 +1083,32 @@ button:disabled {
   border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   padding: 5px 10px;
   border-radius: 999px;
+}
+
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: color 0.12s, border-color 0.12s, background 0.12s, transform 0.05s;
+  white-space: nowrap;
+}
+
+.print-button:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.print-button:active {
+  transform: translateY(1px);
 }
 
 .doc-title {
@@ -1501,4 +1535,188 @@ button:disabled {
 :root[data-theme="light"] .topnav {
   background: color-mix(in srgb, var(--panel) 90%, transparent);
 }
+
+/* ================================================================
+   Print stylesheet — used by the "Save as PDF" button + Ctrl/⌘+P.
+   Strips chrome, forces light theme, lets the doc flow naturally
+   across pages. Mermaid SVGs print at their natural size with
+   transforms reset and a soft outline so they're readable on white.
+   ================================================================ */
+
+@media print {
+  /* Force light treatment regardless of current theme. */
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --panel-2: #f4f6fb;
+    --panel-3: #e5e9f3;
+    --border: #cbd5e1;
+    --border-strong: #94a3b8;
+    --text: #0f172a;
+    --muted: #475569;
+    --muted-2: #64748b;
+    --accent: #4338ca;
+    --accent-2: #4f46e5;
+    --accent-soft: #eef2ff;
+    --code-bg: #f1f5f9;
+    --shadow-sm: none;
+    --shadow-md: none;
+    color-scheme: light;
+  }
+
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  html,
+  body,
+  .shell,
+  .page-content,
+  .doc-shell,
+  .doc-main {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  .bg-glow,
+  .topnav,
+  .doc-toc,
+  .print-button,
+  .mermaid-toolbar,
+  .mermaid-overlay {
+    display: none !important;
+  }
+
+  .doc-shell {
+    display: block !important;
+  }
+
+  .doc-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .doc-header-row {
+    margin-bottom: 8px;
+  }
+
+  .doc-title {
+    font-size: 26pt !important;
+    color: #0f172a !important;
+    background: none !important;
+    -webkit-text-fill-color: #0f172a !important;
+    margin: 6pt 0 4pt;
+    page-break-after: avoid;
+  }
+
+  .doc-subtitle {
+    color: #475569 !important;
+    margin-bottom: 14pt;
+  }
+
+  .doc-eyebrow {
+    color: #4338ca !important;
+    background: #eef2ff !important;
+    border-color: #c7d2fe !important;
+  }
+
+  .doc-prose {
+    color: #0f172a !important;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+
+  .doc-prose p,
+  .doc-prose li {
+    color: #1f2937 !important;
+  }
+
+  .doc-prose h1,
+  .doc-prose h2,
+  .doc-prose h3,
+  .doc-prose h4 {
+    color: #0f172a !important;
+    page-break-after: avoid;
+  }
+
+  .doc-prose h2 {
+    border-bottom: 1px solid #cbd5e1 !important;
+    margin-top: 22pt;
+  }
+
+  .doc-prose pre {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    page-break-inside: avoid;
+  }
+
+  .doc-prose code {
+    background: #f1f5f9 !important;
+    color: #4338ca !important;
+  }
+
+  .doc-prose table {
+    border: 1px solid #cbd5e1 !important;
+    page-break-inside: avoid;
+  }
+
+  .doc-prose th {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  .doc-prose th,
+  .doc-prose td {
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Mermaid diagrams — reset interactive transforms, give a clean frame. */
+  .mermaid-container {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    page-break-inside: avoid;
+  }
+
+  .mermaid-container.is-fullscreen {
+    /* Hidden anyway because .mermaid-overlay is display:none. */
+    display: none !important;
+  }
+
+  .mermaid-viewport {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 14pt !important;
+  }
+
+  .mermaid-block {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .mermaid-block svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Anchors and links — show URL after link text for offline readers. */
+  .doc-prose a {
+    color: #4338ca !important;
+    text-decoration: underline;
+  }
+
+  .doc-prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #64748b;
+    word-break: break-all;
+  }
+}
+
 
