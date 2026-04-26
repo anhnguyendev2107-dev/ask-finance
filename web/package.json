@@ -15,7 +15,8 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
     "remark-gfm": "^4.0.0",
-    "mermaid": "^11.4.0"
+    "mermaid": "^11.4.0",
+    "recharts": "^3.8.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",

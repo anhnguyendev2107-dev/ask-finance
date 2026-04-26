@@ -521,6 +521,29 @@ button:disabled {
   margin: 10px 0 4px;
 }
 
+.chart-loading {
+  height: 290px;
+  background:
+    linear-gradient(90deg, var(--panel-2), var(--panel-3), var(--panel-2));
+  background-size: 200% 100%;
+  animation: chart-shimmer 1.4s linear infinite;
+}
+
+@keyframes chart-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Recharts surface tweaks */
+.chart-wrap .recharts-default-tooltip {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.chart-wrap .recharts-cartesian-axis-tick-value {
+  font-feature-settings: "tnum" 1;
+}
+
 .chart-title {
   font-size: 12px;
   font-weight: 600;
