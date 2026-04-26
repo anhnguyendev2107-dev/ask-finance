@@ -184,7 +184,7 @@ button:disabled {
 .left-pane {
   background: var(--panel);
   border-right: 1px solid var(--border);
-  padding: 18px 14px;
+  padding: 12px 14px 18px;
   overflow-y: auto;
   overscroll-behavior: contain;
   min-height: 0;
@@ -193,7 +193,13 @@ button:disabled {
   gap: 14px;
 }
 
-.left-pane-header,
+.left-pane-header {
+  display: flex;
+  flex-direction: column;
+  /* No label any more — the picker sits flush at the top, visually
+     directly below the brand mark in the top nav. */
+}
+
 .left-pane-section {
   display: flex;
   flex-direction: column;
@@ -941,6 +947,7 @@ button:disabled {
 
 /* ===== Center pane — chat ===== */
 .center-pane {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -1020,6 +1027,45 @@ button:disabled {
   color: var(--text);
   border-color: var(--border-strong);
   background: var(--panel-2);
+}
+
+/* Top-nav variant — menu / info buttons live in the global header on
+   responsive widths, so the chat surface stays empty. */
+.topnav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.topnav-toggle:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--panel-2);
+}
+
+@media (max-width: 1100px) {
+  .topnav-toggle.topnav-toggle-right {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 720px) {
+  .topnav-toggle.topnav-toggle-left {
+    display: inline-flex;
+    margin-right: 4px;
+  }
+  .topnav-toggle {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .mobile-backdrop {
@@ -1573,6 +1619,21 @@ button:disabled {
 
 .right-pane h3:first-child {
   margin-top: 0;
+}
+
+.right-pane-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.right-pane-top h3 {
+  margin: 0;
+}
+
+.right-pane-top + * {
+  margin-top: 10px;
 }
 
 .scope-card {

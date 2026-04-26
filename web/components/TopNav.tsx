@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useDrawer } from "@/lib/drawer-context";
 import { ThemeToggle } from "./ThemeToggle";
 
 const TABS: { href: string; label: string }[] = [
@@ -13,8 +14,24 @@ const TABS: { href: string; label: string }[] = [
 
 export function TopNav() {
   const pathname = usePathname();
+  const { setLeftOpen, setRightOpen } = useDrawer();
+  const isChatPage = pathname === "/" || pathname === "";
+
   return (
     <header className="topnav">
+      {/* Left mobile toggle — only on the chat page where the conversations
+          drawer exists. Hidden on desktop via CSS. */}
+      {isChatPage && (
+        <button
+          type="button"
+          className="topnav-toggle topnav-toggle-left"
+          aria-label="Open conversations"
+          onClick={() => setLeftOpen(true)}
+        >
+          <MenuIcon />
+        </button>
+      )}
+
       <Link className="brand-link" href="/">
         <span className="brand-mark" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -68,6 +85,17 @@ export function TopNav() {
       </nav>
 
       <div className="topnav-actions">
+        {/* Right mobile toggle — only on chat page; opens scope/citations drawer. */}
+        {isChatPage && (
+          <button
+            type="button"
+            className="topnav-toggle topnav-toggle-right"
+            aria-label="Open scope and citations"
+            onClick={() => setRightOpen(true)}
+          >
+            <InfoIcon />
+          </button>
+        )}
         <a
           className="topnav-link"
           href="https://github.com/anhnguyendev2107-dev/ask-finance"
@@ -90,4 +118,24 @@ function isActive(pathname: string | null, href: string): boolean {
   if (!pathname) return false;
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
+}
+
+function MenuIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <line x1="12" y1="11" x2="12" y2="17" />
+      <line x1="12" y1="7" x2="12" y2="7.01" />
+    </svg>
+  );
 }

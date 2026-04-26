@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { Chart, type ChartSpec } from "@/components/Chart";
 import { ConversationList, type ConversationSummary } from "@/components/ConversationList";
 import { UserPicker } from "@/components/UserPicker";
+import { useDrawer } from "@/lib/drawer-context";
 
 // localStorage keys
 const CONVO_KEY = (userId: string) => `ask-finance:conversations:${userId}`;
@@ -122,35 +123,19 @@ export default function Page() {
   const [activeConversationId, setActiveConversationId] = useState<string>("");
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
-  const [leftOpen, setLeftOpen] = useState(false);   // mobile drawer
-  const [rightOpen, setRightOpen] = useState(false); // mobile drawer
-  const [headerHidden, setHeaderHidden] = useState(false);
+  const { leftOpen, rightOpen, setLeftOpen, setRightOpen, closeAll } = useDrawer();
   const messagesRef = useRef<HTMLDivElement>(null);
   const rightPaneRef = useRef<HTMLElement>(null);
-
-  // ---- Auto-hide chat header when the user scrolls away from top ---------
-  useEffect(() => {
-    const el = messagesRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      setHeaderHidden(el.scrollTop > 12);
-    };
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, []);
 
   // ---- ESC closes mobile drawers -----------------------------------------
   useEffect(() => {
     if (!leftOpen && !rightOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLeftOpen(false);
-        setRightOpen(false);
-      }
+      if (e.key === "Escape") closeAll();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [leftOpen, rightOpen]);
+  }, [leftOpen, rightOpen, closeAll]);
 
   const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 720;
 
@@ -446,19 +431,11 @@ export default function Page() {
   return (
     <div className={`app${leftOpen ? " left-open" : ""}${rightOpen ? " right-open" : ""}`}>
       {(leftOpen || rightOpen) && (
-        <button
-          className="mobile-backdrop"
-          aria-label="Close panel"
-          onClick={() => {
-            setLeftOpen(false);
-            setRightOpen(false);
-          }}
-        />
+        <button className="mobile-backdrop" aria-label="Close panel" onClick={closeAll} />
       )}
 
       <aside className="left-pane">
         <div className="left-pane-header">
-          <div className="section-label">Active user</div>
           <UserPicker users={users} activeId={activeUserId} onChange={setActiveUserId} />
         </div>
 
@@ -479,44 +456,6 @@ export default function Page() {
       </aside>
 
       <main className="center-pane">
-        <header className={`chat-header${headerHidden ? " is-hidden" : ""}`}>
-          <button
-            type="button"
-            className="mobile-toggle mobile-toggle-left"
-            aria-label="Open conversations"
-            onClick={() => setLeftOpen(true)}
-          >
-            <MenuIcon />
-          </button>
-          <div className="header-title">
-            {activeUser && (
-              <div className={`avatar a-${(users.findIndex((u) => u.user_id === activeUserId) % 5) + 1}`}>
-                {initials(activeUser.name)}
-              </div>
-            )}
-            <div className="header-title-text">
-              <h1>{activeConversation?.title ?? (activeUser ? activeUser.name : "—")}</h1>
-              <div className="scope-badge">
-                {activeUser
-                  ? `${activeUser.role} · ${activeUser.scope_description}`
-                  : "loading…"}
-              </div>
-            </div>
-          </div>
-          <div className="chat-header-actions">
-            <span className={`provider-badge ${lastTrace?.provider === "gemini" ? "live" : ""}`}>
-              {lastTrace ? lastTrace.provider : "—"}
-            </span>
-            <button
-              type="button"
-              className="mobile-toggle mobile-toggle-right"
-              aria-label="Open scope and citations"
-              onClick={() => setRightOpen(true)}
-            >
-              <InfoIcon />
-            </button>
-          </div>
-        </header>
 
         <div className="messages" ref={messagesRef}>
           {messages.length === 0 && activeUser && (
@@ -630,7 +569,14 @@ export default function Page() {
       </main>
 
       <aside className="right-pane" ref={rightPaneRef}>
-        <h3>Visible scope</h3>
+        <div className="right-pane-top">
+          <h3>Visible scope</h3>
+          {lastTrace && (
+            <span className={`provider-badge ${lastTrace.provider === "gemini" ? "live" : ""}`}>
+              {lastTrace.provider}
+            </span>
+          )}
+        </div>
         {activeUser ? (
           <div className="scope-card">
             <div className="row">
@@ -726,26 +672,6 @@ function SendIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M5 12h14" />
       <path d="M13 5l7 7-7 7" />
-    </svg>
-  );
-}
-
-function MenuIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <line x1="3" y1="12" x2="21" y2="12" />
-      <line x1="3" y1="18" x2="21" y2="18" />
-    </svg>
-  );
-}
-
-function InfoIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="9" />
-      <line x1="12" y1="11" x2="12" y2="17" />
-      <line x1="12" y1="7" x2="12" y2="7.01" />
     </svg>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { TopNav } from "@/components/TopNav";
+import { DrawerProvider } from "@/lib/drawer-context";
 
 export const metadata: Metadata = {
   title: "Ask Finance — AI Finance Business Partner",
@@ -31,10 +32,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
       <body>
-        <div className="shell">
-          <TopNav />
-          <div className="page-content">{children}</div>
-        </div>
+        <DrawerProvider>
+          <div className="shell">
+            <TopNav />
+            <div className="page-content">{children}</div>
+          </div>
+        </DrawerProvider>
         <div className="bg-glow" aria-hidden="true" />
       </body>
     </html>
