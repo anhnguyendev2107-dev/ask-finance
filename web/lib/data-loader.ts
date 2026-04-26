@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseCsv } from "./csv";
 import { filterByScope, require_ } from "./rbac";
-import type { ActualsRow, BudgetRow, ProjectRow, RBACContext } from "./types";
+import type { ActualsRow, BudgetRow, HfmRow, ProjectRow, RBACContext } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "lib", "data");
 
@@ -14,6 +14,7 @@ function readCsv<T>(file: string, numericFields: string[]): T[] {
 let _actuals: ActualsRow[] | null = null;
 let _budget: BudgetRow[] | null = null;
 let _projects: ProjectRow[] | null = null;
+let _hfm: HfmRow[] | null = null;
 
 function actuals(): ActualsRow[] {
   return (_actuals ??= readCsv<ActualsRow>("sap_gl_actuals.csv", ["amount_usd_mn"]));
@@ -27,6 +28,9 @@ function projects(): ProjectRow[] {
     "returns_usd_mn",
     "roi_pct",
   ]));
+}
+function hfm(): HfmRow[] {
+  return (_hfm ??= readCsv<HfmRow>("hfm_consolidated.csv", ["amount_usd_mn"]));
 }
 
 export function actualsFor(ctx: RBACContext): ActualsRow[] {
@@ -44,9 +48,22 @@ export function projectsFor(ctx: RBACContext): ProjectRow[] {
   return filterByScope(ctx, projects());
 }
 
+/**
+ * HFM rows have no region column — group consolidation is rolled up by entity
+ * and BU only. The scope filter therefore applies BU only; region scope is
+ * irrelevant at the consolidation level.
+ */
+export function hfmFor(ctx: RBACContext): HfmRow[] {
+  require_(ctx, "read_actuals");
+  const rows = hfm();
+  if (ctx.bu_scope === "*") return rows;
+  return rows.filter((r) => r.bu === ctx.bu_scope);
+}
+
 export function dataCatalog(ctx: RBACContext) {
   const a = actualsFor(ctx);
   const p = ctx.capabilities.read_projects ? projectsFor(ctx) : [];
+  const h = hfmFor(ctx);
   return {
     actuals: {
       rows: a.length,
@@ -58,6 +75,11 @@ export function dataCatalog(ctx: RBACContext) {
     projects: {
       rows: p.length,
       projects: uniqueSorted(p.map((r) => r.project_name)),
+    },
+    hfm: {
+      rows: h.length,
+      entities: uniqueSorted(h.map((r) => r.entity)),
+      business_units: uniqueSorted(h.map((r) => r.bu)),
     },
     budget_access: ctx.capabilities.read_budget,
   };

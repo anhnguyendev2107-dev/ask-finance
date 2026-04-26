@@ -1,4 +1,4 @@
-import { actualsFor, budgetFor, dataCatalog, projectsFor } from "./data-loader";
+import { actualsFor, budgetFor, dataCatalog, hfmFor, projectsFor } from "./data-loader";
 import { GLOSSARY, lookupGlossary } from "./glossary";
 import { can, PermissionDeniedError, scopeDescription } from "./rbac";
 import type { ActualsRow, Citation, RBACContext } from "./types";
@@ -256,6 +256,80 @@ export function toolLookupGlossary(
   };
 }
 
+/**
+ * HFM consolidated P&L — group-level, post-elimination view rolled up by
+ * legal entity / BU. Distinct from get_pnl_summary, which sums SAP-ECC ledger
+ * rows pre-elimination. Useful when the user asks "group EBIT" or compares
+ * consolidated vs. ledger numbers.
+ */
+export function toolGetConsolidatedPnl(
+  ctx: RBACContext,
+  args: {
+    bu?: string;
+    entity?: string;
+    fiscal_year?: string;
+    fiscal_quarter?: string;
+  },
+): Record<string, unknown> {
+  let rows = hfmFor(ctx);
+  if (args.bu) rows = rows.filter((r) => r.bu === args.bu);
+  if (args.entity) rows = rows.filter((r) => r.entity === args.entity);
+  if (args.fiscal_year) rows = rows.filter((r) => r.fiscal_year === args.fiscal_year);
+  if (args.fiscal_quarter) rows = rows.filter((r) => r.fiscal_quarter === args.fiscal_quarter);
+
+  if (rows.length === 0) {
+    return {
+      error: "No HFM rows in your scope match.",
+      scope: scopeDescription(ctx),
+      filters_applied: args,
+    };
+  }
+
+  const cats: Record<string, number> = {};
+  for (const r of rows) {
+    cats[r.account_category] = (cats[r.account_category] ?? 0) + r.amount_usd_mn;
+  }
+  for (const k of Object.keys(cats)) cats[k] = round(cats[k], 3);
+
+  const revenue = cats.Revenue ?? 0;
+  const cogs = cats.COGS ?? 0;
+  const opex = cats.Opex ?? 0;
+  const da = cats["D&A"] ?? 0;
+  const finance = cats.Finance ?? 0;
+  const tax = cats.Tax ?? 0;
+
+  const grossProfit = revenue + cogs;
+  const ebitda = revenue + cogs + opex;
+  const ebit = ebitda + da;
+  const netIncome = ebit + finance + tax;
+
+  return {
+    scope: scopeDescription(ctx),
+    filters_applied: args,
+    currency: "USD millions",
+    by_category: cats,
+    metrics: {
+      Revenue: round(revenue, 3),
+      "Gross Profit": round(grossProfit, 3),
+      "Gross Margin %": pct(grossProfit, revenue),
+      EBITDA: round(ebitda, 3),
+      EBIT: round(ebit, 3),
+      "EBIT Margin %": pct(ebit, revenue),
+      "Net Income": round(netIncome, 3),
+      "Net Margin %": pct(netIncome, revenue),
+    },
+    entities: Array.from(new Set(rows.map((r) => r.entity))).sort(),
+    note: "HFM is group-consolidated, post-elimination. Numbers may differ from SAP-ECC ledger sums (get_pnl_summary).",
+    citations: [
+      {
+        source: "Oracle HFM (hfm_consolidated.csv)",
+        filters: describeFilters(args),
+        rows: rows.length,
+      } satisfies Citation,
+    ],
+  };
+}
+
 export function toolGenerateChart(
   _ctx: RBACContext,
   args: {
@@ -376,6 +450,21 @@ export const TOOL_SCHEMAS = [
     },
   },
   {
+    name: "get_consolidated_pnl",
+    description:
+      "Group-consolidated P&L from Oracle HFM (post-elimination). Distinct from get_pnl_summary (which sums SAP-ECC ledger pre-elimination). Use this when the user asks for the GROUP P&L, intercompany-eliminated numbers, or HFM-specific entity views. HFM has no region dimension — only BU/entity scope applies.",
+    input_schema: {
+      type: "object",
+      properties: {
+        bu: { type: "string", description: "Business unit (e.g. 'Electronics')." },
+        entity: { type: "string", description: "Legal entity code (e.g. 'GRP-ELEC')." },
+        fiscal_year: { type: "string" },
+        fiscal_quarter: { type: "string", enum: ["Q1", "Q2", "Q3", "Q4"] },
+      },
+      required: [],
+    },
+  },
+  {
     name: "generate_chart",
     description:
       "Render a chart inline in the response. Call AFTER you have the data from get_metric_trend or get_project_roi (or any other source). The chart is rendered as SVG by the UI; you do not need to draw anything yourself. Prefer line charts for time series, bar charts for categorical comparisons.",
@@ -418,6 +507,8 @@ export const TOOL_DISPATCH: Record<string, ToolFn> = {
     ),
   get_project_roi: (ctx, a) =>
     toolGetProjectRoi(ctx, a as Parameters<typeof toolGetProjectRoi>[1]),
+  get_consolidated_pnl: (ctx, a) =>
+    toolGetConsolidatedPnl(ctx, a as Parameters<typeof toolGetConsolidatedPnl>[1]),
   generate_chart: (ctx, a) =>
     toolGenerateChart(ctx, a as Parameters<typeof toolGenerateChart>[1]),
 };

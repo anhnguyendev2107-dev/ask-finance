@@ -47,6 +47,23 @@ export interface ProjectRow {
   source: string;
 }
 
+/**
+ * HFM consolidated rows — group-level, post-elimination, per legal entity.
+ * Note: no `region` column. Group consolidation is rolled up by entity / BU only.
+ */
+export interface HfmRow {
+  period: string;
+  fiscal_year: string;
+  fiscal_quarter: string;
+  entity: string;
+  bu: string;
+  account_code: string;
+  account_name: string;
+  account_category: string;
+  amount_usd_mn: number;
+  source: string;
+}
+
 export interface Citation {
   source: string;
   filters: string;
