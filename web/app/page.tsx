@@ -124,8 +124,20 @@ export default function Page() {
   const [busy, setBusy] = useState(false);
   const [leftOpen, setLeftOpen] = useState(false);   // mobile drawer
   const [rightOpen, setRightOpen] = useState(false); // mobile drawer
+  const [headerHidden, setHeaderHidden] = useState(false);
   const messagesRef = useRef<HTMLDivElement>(null);
   const rightPaneRef = useRef<HTMLElement>(null);
+
+  // ---- Auto-hide chat header when the user scrolls away from top ---------
+  useEffect(() => {
+    const el = messagesRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setHeaderHidden(el.scrollTop > 12);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   // ---- ESC closes mobile drawers -----------------------------------------
   useEffect(() => {
@@ -467,7 +479,7 @@ export default function Page() {
       </aside>
 
       <main className="center-pane">
-        <header className="chat-header">
+        <header className={`chat-header${headerHidden ? " is-hidden" : ""}`}>
           <button
             type="button"
             className="mobile-toggle mobile-toggle-left"
@@ -595,7 +607,7 @@ export default function Page() {
         </div>
 
         <div className="composer">
-          <div className="input-row">
+          <div className={`input-shell${input.trim() ? " has-input" : ""}`}>
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -605,11 +617,13 @@ export default function Page() {
               disabled={busy || !activeUserId}
             />
             <button
+              type="button"
               className="send-btn"
+              aria-label="Send"
               onClick={() => void send()}
               disabled={busy || !activeUserId || !input.trim()}
             >
-              Send
+              <SendIcon />
             </button>
           </div>
         </div>
@@ -705,6 +719,15 @@ function initials(name: string): string {
     .slice(0, 2)
     .map((s) => s[0]?.toUpperCase() ?? "")
     .join("");
+}
+
+function SendIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="M13 5l7 7-7 7" />
+    </svg>
+  );
 }
 
 function MenuIcon() {
