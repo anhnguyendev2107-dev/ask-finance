@@ -247,6 +247,43 @@ These guards catch the failure mode that scares Finance the most — a number th
 
 ---
 
+## Prompt design
+
+The model receives three structured input streams every turn — the **system prompt**, the **tool catalogue**, and the **conversation history**. They have different lifetimes and different jobs.
+
+### What goes in the system prompt
+
+The system prompt is the **identity, contract, and scope** for this conversation. Built freshly per request from `ctx`:
+
+- User name, role, scope description (`BU=Electronics, all regions`), and budget access flag.
+- The catalog the user can see — visible BUs, regions, projects — built from `dataCatalog(ctx)` so the model proposes tool calls that hit non-empty scopes.
+- A 7-rule contract: cite every numeric claim, never invent numbers, respect scope, prefer tables, lead with the headline, call `lookup_glossary` for ambiguous terms, call `generate_chart` after fetching trend data.
+- An output-format spec: one-sentence headline → bullet/table breakdown → optional chart → `Sources:` list.
+
+### What does NOT go in the system prompt
+
+- **Tool descriptions and JSON schemas** — these live in the provider-native `tools` parameter, validated machine-side. Putting them in prose text would inflate input tokens and trade machine-checkable correctness for prose interpretation.
+- **Capability rules.** A prompt rule like *"Analyst cannot read budget"* is a hint, not a guarantee. Capability checks happen in TS via `require_(ctx, "read_budget")`. The prompt is silent on what the user *cannot* do; the data layer enforces it.
+- **Few-shot examples.** Stable point questions are handled well from the schema alone. Few-shots will be added when an evaluation gap emerges, not pre-emptively — a bad few-shot calcifies a bad pattern.
+
+### Why scope is in the prompt at all
+
+Scope is the *one* thing we put in the prompt — and only as a planning hint, not a security boundary. If a model is told it can see only Electronics it will not waste a turn calling `get_pnl_summary(bu="Healthcare")`. If we removed the hint the system would still be safe (the data layer would return empty rows), but the user would see slower, more confused responses. **Hint, not gate.**
+
+### Prompt caching
+
+The system prompt is structurally identical for the same user across a session — same name, role, scope. That static prefix is a candidate for provider-native prompt caching (Anthropic's `cache_control`, Gemini's context cache), cutting input cost by ~60% on returning sessions. The delta between turns (the user query) is small.
+
+### Prompt versioning
+
+Every change to the prompt template is a controlled deploy:
+
+- The template lives under version control with a content hash.
+- The hash is recorded with every audit event, so a regression seen in production can be tied back to the specific prompt version that served it.
+- Prompt changes go through the eval harness like any code change — tool-plan agreement on the golden set is part of the PR diff.
+
+---
+
 ## Tools — the contract surface
 
 Every tool obeys three rules:
@@ -278,6 +315,64 @@ The prototype could shell out to matplotlib server-side and ship a PNG, like the
 3. **The chart should be inspectable.** SVG points are real DOM nodes; a screen-reader can describe them; an analytics team can pull values out of the page. PNGs erase all that.
 
 The `generate_chart` tool returns `{title, type, x_label, y_label, series:[{x,y}]}`; the React `Chart` component does the layout, axis nice-ticks, area path, and tooltips deterministically.
+
+---
+
+## Output generation
+
+Three output channels, ordered by frequency of use.
+
+### Inline markdown — the default
+
+The agent's final text is rendered with `react-markdown` + `remark-gfm`. Tables, code, bullet lists, bold/italic, links — all just work. A small CSS layer styles them to feel native to the chat UI rather than "rendered markdown."
+
+### Inline SVG charts — `generate_chart`
+
+When the user asks for a trend, comparison, or "show / plot / chart," the agent calls `generate_chart` with `{title, type:"line"|"bar", x_label, y_label, series:[{x,y}]}`. The tool returns the spec — **no PNG, no server-side raster.** The React `Chart` component lays out axes (nice-tick algorithm), renders the line/area or bars, and adds hover tooltips. Charts re-paint on theme toggle and remain inspectable in the DOM (screen readers, copy-paste, downstream tooling).
+
+### Excel export — `generate_excel`, gated by `export` capability
+
+For users who need to bring a result into a deck or model. Server-side `openpyxl` (Python prototype) / `exceljs` (production) writes a styled `.xlsx` to a short-lived signed URL the UI download-prompts. Headers bold, currency cells `$#,##0.0M`, variance cells coloured red/green by sign. Analysts (no `export`) see no button — capability gate, not just CSS.
+
+### PowerPoint and scheduled deliverables — Roadmap
+
+Deferred to Phase 2+. The same chart and table tools fan out into a `python-pptx` template producing the BU's monthly review deck. The agent doesn't generate creatively — it fills sections of a Finance-Control-approved template. Creative narrative gets a BP in the loop.
+
+### Citations are an output
+
+Every answer ends with a `Sources:` block. The list is built from `tool_calls[].result.citations`, **not** from the model's claim. The model is told to surface them, but the UI also renders them in the right pane independently from the markdown. If the model drops a citation, the right-pane block still shows what was actually queried.
+
+### What we explicitly do NOT generate
+
+- **Speculative narrative** — *"I think margin will continue to compress"* is forecasting, not reporting. Forecasting is a separate product.
+- **Email / Slack push** — read-on-pull only. Push requires consent and stake-holder routing logic that doesn't belong here.
+- **Direct-to-leadership delivery** — every output goes through the requester, not their stakeholder.
+
+---
+
+## Finance domain knowledge
+
+The agent must speak finance fluently — know that EBIT excludes Interest and Tax, that a positive variance on a *cost* account is *favourable* (under-spent), that *Gross Margin* takes Revenue as the base.
+
+### What's encoded today
+
+A curated **glossary** (`lib/glossary.ts`) covering ~13 canonical terms — Revenue, COGS, Gross Profit, Gross Margin, Opex, EBITDA, EBIT, EBIT Margin, Net Income, Variance, ROI, P&L, Cash Flow. Each entry has:
+
+```ts
+{
+  definition: string;        // plain-language meaning
+  formula:    string;        // computational identity
+  categories: string[];      // account_category values it touches
+}
+```
+
+Plus a flat alias map (`opex` → `Opex`, `cogs` → `COGS`, `operating margin` → `EBIT Margin`, etc.) so the model and the user can use either casual or canonical names.
+
+The agent reaches this via `lookup_glossary(term)`. The system prompt instructs it to call this tool whenever a term is ambiguous *before* computing — so the formula it relies on is the formula Finance Control wrote, not the formula the model interpolated from training data.
+
+### Why a hash map today, not a vector store
+
+For thirteen terms a hash map wins on every metric: zero latency, zero cost, perfect recall, version-controlled with the code, reviewable by Finance Control in one PR. The boundary is at ~50 unique definitions, where retrieval starts to earn its operational tax. That migration is what the next section is about.
 
 ---
 
@@ -338,11 +433,46 @@ These are separate from the agent-level metrics in Evaluation, because the failu
 
 ---
 
-## Data layer
+## Data ingestion and access
+
+Two layers, deliberately separated. **Ingestion** is how raw rows arrive from source systems. **Access** is how scoped tools read them. The boundary between the two is the contract that makes the connector swap a one-file change.
+
+### Ingestion (today: bundled CSV; tomorrow: connectors → lake)
+
+```mermaid
+flowchart LR
+  subgraph Today["Today — prototype"]
+    CSV["CSV files in lib/data/<br/>committed to repo<br/>~8k rows total"]
+  end
+  subgraph Tomorrow["Production"]
+    SAP[SAP-ECC OData]
+    BPC[SAP-BPC API]
+    HFM[HFM web-services]
+    PPM[Planview REST]
+    Bronze[(Bronze<br/>raw, audited)]
+    Silver[(Silver<br/>cleaned, conformed)]
+    Gold[(Gold<br/>shape data-loader expects)]
+  end
+  Loader["data-loader.ts<br/>(unchanged interface)"]
+
+  CSV --> Loader
+  SAP --> Bronze
+  BPC --> Bronze
+  HFM --> Bronze
+  PPM --> Bronze
+  Bronze --> Silver --> Gold
+  Gold --> Loader
+```
+
+In the prototype, ingestion is `fs.readFileSync` over the CSVs in `lib/data/`. The minimal CSV parser is in `lib/csv.ts`. Rows are typed (`ActualsRow`, `BudgetRow`, `ProjectRow`) and parsed once per Node process. Schema is validated implicitly by the typed parse — a missing column or a non-numeric `amount_usd_mn` is a deploy-time error, not a runtime surprise.
+
+In production the same shape is produced by connector adapters writing to a Bronze → Silver → Gold lakehouse layout. Tools never read raw connector responses — only the Gold layer — which gives reproducibility, replay, and decoupling from connector outages.
+
+### Access (scoped reads only)
 
 ```
 lib/data-loader.ts
-  ├─ readCsv()  ── memoised once per process; parses three CSVs
+  ├─ readCsv()         ── memoised once per process; parses CSVs once
   │
   ├─ actualsFor(ctx)   ──► requires read_actuals,  applies bu/region scope
   ├─ budgetFor(ctx)    ──► requires read_budget,   applies bu/region scope
@@ -351,7 +481,11 @@ lib/data-loader.ts
   └─ dataCatalog(ctx)  ──► what this user can see (for tool planning)
 ```
 
-The CSVs in `lib/data/` are deliberate stand-ins for SAP-ECC, SAP-BPC and PPM:
+There is no public unscoped reader. Tools cannot import a "raw" rows object; the only way to get rows is through one of the scoped accessors, each of which checks capabilities and applies the row filter. This is a design discipline more than a technical constraint — the linter could enforce it, but a 5-line review of `data-loader.ts` does the same work.
+
+### Datasets
+
+The CSVs in `lib/data/` are deliberate stand-ins for the production source systems:
 
 | File | Stands in for | Schema |
 |---|---|---|
@@ -523,6 +657,56 @@ Dashboards track:
 - **Cross-session user memory in the prototype.** A "remember that my region is APAC" feature is genuinely useful. It is also a new sensitivity-tagging problem (memories cannot expand scope) and is best built once the SSO integration is real.
 - **Free-text knowledge upload by users.** Tempting for "let me drop in a deck and ask about it." Forbidden because user-provided content becomes a prompt-injection vector that bypasses every tool guard. Knowledge-base ingestion is governed and goes through an approval flow.
 - **Proactive nudges / push notifications.** The system answers when asked. A nudging system inherits all the cost, fairness, and consent considerations of mass communication; out of scope until the answer-when-asked surface is solid.
+
+---
+
+## Example queries by role and expected outputs
+
+These five flows are the canonical demo set and the smoke-test set in CI. Same agent, same prompt template, same data — different bound `ctx`, different answers. A failure on any of them blocks merge.
+
+### Example 1 — "Summarise FY2024 P&L"
+
+| Persona | Tool plan | Expected output |
+|---|---|---|
+| **Group CFO** (`*` / `*`) | `get_pnl_summary({fiscal_year:"FY2024"})` | Group P&L. Revenue $4,929.8M · EBIT $961.5M (19.5% margin) · Net Income $498.6M (10.1%). Sources: SAP-ECC, 1296 rows. |
+| **BU GM — Electronics** (`Electronics` / `*`) | same call, `ctx`-filtered | Electronics-only P&L. Sources: SAP-ECC, 432 rows. |
+| **Regional BP — APAC** (`*` / `APAC`) | same call, `ctx`-filtered | APAC-only P&L across all BUs. |
+| **BU Finance BP — Auto/Americas** (`Automotive` / `Americas`) | same call, `ctx`-filtered | Automotive-Americas P&L only. |
+| **Analyst — Healthcare/APAC** (`Healthcare` / `APAC`) | same call, `ctx`-filtered | Healthcare-APAC P&L only. |
+
+**Reconciliation property** — regional sub-totals sum to the group total within ±0.5%. The eval harness asserts this nightly.
+
+### Example 2 — "What was Opex variance for Q2 FY2024 in Electronics?"
+
+| Persona | Behaviour |
+|---|---|
+| Group CFO | `get_variance({bu:"Electronics", fiscal_quarter:"Q2", fiscal_year:"FY2024", account_category:"Opex"})` → actual −$78.8M vs budget −$77.8M, variance −$1.0M (−1.25%, **Unfavourable**). Sources: SAP-ECC actuals + SAP-BPC budget. |
+| BU GM — Electronics | Same answer (Electronics is in scope, has `read_budget`). |
+| **Analyst — Healthcare/APAC** | Refusal: *"Your role does not have budget data access."* Tool returned `permission_denied` from `require_(ctx, "read_budget")`. UI hides any Excel export option. |
+| BU GM — Automotive | Empty-scope: *"I don't have Electronics data in your scope."* `filterByScope` reduced the row set to zero. |
+
+### Example 3 — "Show ROI trend of Project Orion"
+
+| Persona | Behaviour |
+|---|---|
+| Group CFO | `get_project_roi({project_name:"Project Orion"})` → 3-row table (FY2023 7.79% → FY2024 12.69% → FY2025 18.50%) plus `generate_chart(line)` rendering inline SVG. Sources: PPM-System. |
+| BU GM — Electronics | Same answer (Project Orion is Electronics/APAC). |
+| BU GM — Automotive | *"No project named 'Project Orion' is visible in your scope."* `projectsFor(ctx)` returned an empty row set. |
+| Regional BP — APAC | Same as CFO (Project Orion is APAC). |
+
+### Example 4 — "What is EBIT?" (glossary)
+
+Identical answer for every persona — a glossary lookup is independent of scope:
+
+> **EBIT** — Earnings Before Interest and Tax (operating profit).
+> Formula: `EBIT = EBITDA − D&A = Revenue − COGS − Opex − D&A`
+> Sources: Internal Finance Glossary.
+
+### Example 5 — "Plot EBIT margin trend FY2023 to FY2025"
+
+For the CFO this calls `get_metric_trend(metric:"EBIT Margin %", fiscal_years:["FY2023","FY2024","FY2025"])` then `generate_chart(line)`, returning a 3-point line chart of 19.71% → 19.50% → 20.82%. For an Analyst restricted to Healthcare/APAC the same call returns the chart for that scope only — every point is computed only from the rows the Analyst is allowed to see.
+
+The chart in the rendered answer is an inline SVG; zoom and re-theme work without re-fetching.
 
 ---
 
