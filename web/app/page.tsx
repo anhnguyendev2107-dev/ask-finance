@@ -45,10 +45,13 @@ interface AgentTrace {
 }
 
 interface ChatMessage {
+  id: string;
   role: "user" | "assistant";
   content: string;
   trace?: AgentTrace;
 }
+
+const newMessageId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
 const EXAMPLES_BY_ROLE: Record<string, string[]> = {
   "Group CFO": [
@@ -119,7 +122,10 @@ export default function Page() {
       }
       const parsed = JSON.parse(raw) as { v?: number; messages?: ChatMessage[] };
       if (parsed?.v === HISTORY_VERSION && Array.isArray(parsed.messages)) {
-        setMessages(parsed.messages);
+        // Back-fill ids for messages stored before they were tracked.
+        setMessages(
+          parsed.messages.map((m) => (m.id ? m : { ...m, id: newMessageId() })),
+        );
       } else {
         setMessages([]);
       }
@@ -154,12 +160,23 @@ export default function Page() {
   };
 
   const recentQueries = useMemo(() => {
-    const out: string[] = [];
+    const out: { id: string; text: string }[] = [];
     for (let i = messages.length - 1; i >= 0 && out.length < 12; i--) {
-      if (messages[i].role === "user") out.push(messages[i].content);
+      const m = messages[i];
+      if (m.role === "user") out.push({ id: m.id, text: m.content });
     }
     return out;
   }, [messages]);
+
+  const jumpToMessage = (id: string) => {
+    const el = messagesRef.current?.querySelector(
+      `[data-msg-id="${CSS.escape(id)}"]`,
+    ) as HTMLElement | null;
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add("highlight-flash");
+    window.setTimeout(() => el.classList.remove("highlight-flash"), 1400);
+  };
 
   useEffect(() => {
     if (messagesRef.current) {
@@ -178,7 +195,7 @@ export default function Page() {
     const query = (queryOverride ?? input).trim();
     if (!query || !activeUserId || busy) return;
     setInput("");
-    setMessages((m) => [...m, { role: "user", content: query }]);
+    setMessages((m) => [...m, { id: newMessageId(), role: "user", content: query }]);
     setBusy(true);
     try {
       const r = await fetch("/api/ask", {
@@ -190,6 +207,7 @@ export default function Page() {
       setMessages((m) => [
         ...m,
         {
+          id: newMessageId(),
           role: "assistant",
           content: trace.error ? `⚠️ ${trace.error}` : trace.final_text || "(empty response)",
           trace,
@@ -199,6 +217,7 @@ export default function Page() {
       setMessages((m) => [
         ...m,
         {
+          id: newMessageId(),
           role: "assistant",
           content: `⚠️ Network error: ${err instanceof Error ? err.message : String(err)}`,
         },
@@ -243,16 +262,15 @@ export default function Page() {
             </div>
           ) : (
             <ul className="history-list">
-              {recentQueries.map((q, i) => (
-                <li key={i}>
+              {recentQueries.map((q) => (
+                <li key={q.id}>
                   <button
                     type="button"
                     className="history-item"
-                    onClick={() => void send(q)}
-                    disabled={busy}
-                    title={q}
+                    onClick={() => jumpToMessage(q.id)}
+                    title={`Jump to: ${q.text}`}
                   >
-                    {q}
+                    {q.text}
                   </button>
                 </li>
               ))}
@@ -298,7 +316,11 @@ export default function Page() {
           {messages.map((m, i) => {
             const charts = m.trace ? extractCharts(m.trace) : [];
             return (
-              <div key={i} className={`message ${m.role}`}>
+              <div
+                key={m.id ?? i}
+                data-msg-id={m.id}
+                className={`message ${m.role}`}
+              >
                 <div className={`msg-avatar ${m.role === "user" ? "user-av" : "assistant-av"}`}>
                   {m.role === "user" && activeUser ? initials(activeUser.name) : "AI"}
                 </div>

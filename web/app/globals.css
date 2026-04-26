@@ -416,6 +416,25 @@ button:disabled {
   padding: 4px 2px;
 }
 
+/* Brief glow when "Recent queries" jumps to an old Q+A pair. */
+.message.highlight-flash .bubble {
+  animation: highlight-flash 1.4s ease-out;
+}
+
+@keyframes highlight-flash {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-soft);
+    border-color: var(--accent);
+  }
+  20% {
+    box-shadow: 0 0 0 6px var(--accent-soft);
+    border-color: var(--accent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
 .brand {
   display: flex;
   align-items: center;
