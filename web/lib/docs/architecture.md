@@ -158,6 +158,43 @@ Routing rules (codified, not heuristic):
 
 Three states per provider — **Closed** (healthy), **Open** (failing, blocked for cooldown), **Half-open** (probe one request, decide). Implemented with a sliding window of the last `N=20` calls; opens at `≥40%` failure rate; cooldown 30 s; probes resume at most once per 5 s. Standard pattern, mature in finance systems for decades — it is what keeps a degraded dependency from cascading into a full outage.
 
+### Per-provider API-key pool
+
+Provider-level fallback keeps the system alive when a *vendor* fails. A second, finer-grained mechanism keeps it alive when a *single API key* fails (rate limit, quota, key revocation): each provider holds an internal **pool of keys**, picked round-robin with per-key cooldowns. This matters in two settings:
+
+- **Free / dev tiers**, where one key is throttled to ~5 RPM. With three keys the effective ceiling is ~15 RPM and a demo session never sees a 429.
+- **Production**, where one key being throttled — or revoked by Security mid-shift — should not page the on-call. The next eligible key absorbs traffic transparently.
+
+```mermaid
+flowchart LR
+  Req[generate request]
+  Pool[Key pool · round-robin cursor]
+  K1["key 0<br/>healthy"]
+  K2["key 1<br/>cooling 28s"]
+  K3["key 2<br/>healthy"]
+  Send[Gemini API]
+  Out[response]
+
+  Req --> Pool
+  Pool -- pick eligible --> K1
+  K1 --> Send
+  Send --> Out
+  Send -. 429 .-> Pool
+  Pool -- mark cooldown<br/>45s ± jitter --> K2
+  Pool -- next eligible --> K3
+```
+
+Per-key state machine and selection rules:
+
+- **Selection** — round-robin among entries whose `cooldownUntil < now`. The cursor advances after each pick, and excludes any key already attempted in the current request.
+- **Failure classification** — `429 / RESOURCE_EXHAUSTED / quota` → `rate_limit`, cools the key for **45 s ± 5 s jitter** (per Gemini's published retry guidance). `5xx / UNAVAILABLE / DEADLINE_EXCEEDED` → `server_error`, cools for **5 s**. Anything else is non-retryable and surfaces directly.
+- **Mid-conversation rotation is transparent** because the conversation state lives in the request `contents` array, not in the client. A turn-1 call on key A and a turn-2 call on key B see identical histories.
+- **Lifecycle** — pool is a singleton per Node process (per Vercel function instance). On scale-out each instance has its own view of key health; the worst case is a brief duplicated 429 while the new instance learns what the old one already knew.
+- **Configuration** — three input shapes are supported, in priority order: `GEMINI_API_KEYS` (comma-separated), `GEMINI_API_KEY_1..N` (numbered), `GEMINI_API_KEY` (single, backwards-compatible).
+- **Observability** — the agent trace records `keys_used: number[]` (pool indices, not key values) so a request that visited keys 0 and 2 because key 1 was throttled is debuggable from the response alone.
+
+This nests cleanly under the provider router: the router routes between providers, each provider's adapter routes between its own keys.
+
 ### Cost-aware routing
 
 Two extensions worth doing once cost is a constraint:
@@ -400,7 +437,8 @@ The **explicit non-goals** are equally informative:
 
 | Failure | What happens | What the user sees |
 |---|---|---|
-| Primary LLM rate-limited | Circuit opens; secondary provider takes over | No visible change; metric `provider_failover_total{from=gemini}` increments |
+| One API key rate-limited | Key cools down for 45s; pool rotates to next healthy key in same request | No visible change; trace records the new key index |
+| All keys in a provider rate-limited | Provider circuit opens; secondary provider takes over | No visible change; metric `provider_failover_total{from=gemini}` increments |
 | All providers unavailable | Mock planner activates if `LLM_DEGRADED_MODE=true`; else honest error | "Service temporarily unavailable" with retry-after; or templated mock answer with a banner |
 | Tool throws (e.g. no rows) | `runTool` returns `{error, message}`; loop continues; LLM is told and rephrases | "No matching data in your scope" |
 | Iteration cap hit | `trace.error = "Hit max iteration cap"` | Honest "I couldn't conclude in the allotted steps" |
@@ -458,7 +496,7 @@ Dashboards track:
 
 - **Frontend + API:** Next.js 14 App Router, single Vercel project, `web/` as Root Directory.
 - **API runtime:** Node (`runtime = "nodejs"`) because we read CSV/JSON via `fs`. Files in `lib/data/` and `lib/docs/` are bundled into the lambda by `outputFileTracingIncludes` in `next.config.js`.
-- **Secrets:** `GEMINI_API_KEY` (and optional `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`) set as Vercel Environment Variables; absence triggers the deterministic mock planner.
+- **Secrets:** Either `GEMINI_API_KEY` (single) or `GEMINI_API_KEYS` (comma-separated pool) set as Vercel Environment Variables. Optional secondary providers (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`) follow the same single-or-pool convention. Absence of all keys triggers the deterministic mock planner.
 - **Build size:** ~134 KB First Load JS for the chat page; the docs pages share the same chunk.
 - **Cold start budget:** within Vercel's default Node limits with 50%+ headroom.
 

@@ -100,9 +100,10 @@ Engineering deltas:
 - `lib/providers/{gemini,anthropic,openai,mock}.ts` — each implements the `LLMProvider` interface from the architecture doc.
 - `lib/providers/router.ts` — chain config, circuit breaker, jittered exponential backoff (50 ms base, 2× factor, 1 s ceiling, ±20% jitter).
 - Per-provider error classification (`RATE_LIMIT`, `CONTEXT_OVERFLOW`, `BAD_TOOL_ARGS`, `TIMEOUT`, `SAFETY_BLOCKED`, `UNAVAILABLE`) — the orchestrator switches on the typed error, not on stringy provider error messages.
-- Metrics: `provider_request_total{provider, ok}`, `provider_failover_total{from, to}`, `circuit_state{provider}`.
+- **Per-provider key pool** (already shipped in this build for Gemini): each provider holds a round-robin pool of API keys with per-key cooldown on 429 / 5xx. Drops the first-line failure mode from "vendor outage" to "single-key revocation," which is far more common in practice. Same `lib/key-pool.ts` is reused by every provider adapter.
+- Metrics: `provider_request_total{provider, ok}`, `provider_failover_total{from, to}`, `circuit_state{provider}`, `key_pool_healthy{provider}`, `key_rotation_total{provider, reason}`.
 
-Provider failover is not a "nice to have" — large frontier providers have minutes-to-hours-long outages roughly monthly across the industry. A finance assistant that goes dark in those windows is unfit for purpose.
+Provider failover is not a "nice to have" — large frontier providers have minutes-to-hours-long outages roughly monthly across the industry, and individual API keys hit quota or get rotated by Security on a much shorter cadence. A finance assistant that goes dark in either window is unfit for purpose.
 
 ### 1.3 Output guardrails
 
