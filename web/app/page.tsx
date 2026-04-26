@@ -4,6 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Chart, type ChartSpec } from "@/components/Chart";
+import { UserPicker } from "@/components/UserPicker";
+
+const HISTORY_KEY = (userId: string) => `ask-finance:history:${userId}`;
+const HISTORY_VERSION = 1;
+const MAX_HISTORY_MESSAGES = 100;
 
 type Capability = "read_actuals" | "read_budget" | "read_projects" | "export";
 
@@ -103,9 +108,58 @@ export default function Page() {
       });
   }, []);
 
+  // Load saved history when the active persona changes (or on first mount).
   useEffect(() => {
-    setMessages([]);
+    if (!activeUserId) return;
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY(activeUserId));
+      if (!raw) {
+        setMessages([]);
+        return;
+      }
+      const parsed = JSON.parse(raw) as { v?: number; messages?: ChatMessage[] };
+      if (parsed?.v === HISTORY_VERSION && Array.isArray(parsed.messages)) {
+        setMessages(parsed.messages);
+      } else {
+        setMessages([]);
+      }
+    } catch {
+      setMessages([]);
+    }
   }, [activeUserId]);
+
+  // Persist on every change. Cap the buffer so a runaway session doesn't blow
+  // out localStorage quota (each persona keeps the last MAX_HISTORY_MESSAGES).
+  useEffect(() => {
+    if (!activeUserId) return;
+    try {
+      const trimmed = messages.slice(-MAX_HISTORY_MESSAGES);
+      localStorage.setItem(
+        HISTORY_KEY(activeUserId),
+        JSON.stringify({ v: HISTORY_VERSION, messages: trimmed }),
+      );
+    } catch {
+      /* quota / disabled — silently ignore */
+    }
+  }, [messages, activeUserId]);
+
+  const clearHistory = () => {
+    if (!activeUserId) return;
+    setMessages([]);
+    try {
+      localStorage.removeItem(HISTORY_KEY(activeUserId));
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const recentQueries = useMemo(() => {
+    const out: string[] = [];
+    for (let i = messages.length - 1; i >= 0 && out.length < 12; i--) {
+      if (messages[i].role === "user") out.push(messages[i].content);
+    }
+    return out;
+  }, [messages]);
 
   useEffect(() => {
     if (messagesRef.current) {
@@ -164,30 +218,49 @@ export default function Page() {
   return (
     <div className="app">
       <aside className="left-pane">
-        <div className="brand">
-          <span className="logo">A</span>
-          <span>Ask Finance</span>
+        <div className="left-pane-header">
+          <div className="section-label">Active user</div>
+          <UserPicker users={users} activeId={activeUserId} onChange={setActiveUserId} />
         </div>
-        <div className="tagline">AI Finance Business Partner — demo</div>
 
-        <div className="section-label">Switch user / role</div>
-        {users.map((u, idx) => (
-          <div
-            key={u.user_id}
-            className={`user-card ${u.user_id === activeUserId ? "active" : ""}`}
-            onClick={() => setActiveUserId(u.user_id)}
-          >
-            <div className={`avatar a-${(idx % 5) + 1}`}>{initials(u.name)}</div>
-            <div className="user-info">
-              <div className="user-name">{u.name}</div>
-              <div className="user-role">{u.role}</div>
-              <div className="user-scope">{u.scope_description}</div>
-            </div>
+        <div className="left-pane-section history-section">
+          <div className="section-label section-label-row">
+            <span>Recent queries</span>
+            {recentQueries.length > 0 && (
+              <button
+                type="button"
+                className="link-btn"
+                onClick={clearHistory}
+                aria-label="Clear chat history for this user"
+              >
+                Clear
+              </button>
+            )}
           </div>
-        ))}
+          {recentQueries.length === 0 ? (
+            <div className="history-empty">
+              No history yet. Your conversations are saved per user in this browser.
+            </div>
+          ) : (
+            <ul className="history-list">
+              {recentQueries.map((q, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    className="history-item"
+                    onClick={() => void send(q)}
+                    disabled={busy}
+                    title={q}
+                  >
+                    {q}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-        <div className="section-label">About</div>
-        <div className="about-text">
+        <div className="left-pane-footer">
           Same query, different roles → different data. RBAC is enforced server-side at every
           tool call, never trusted to the LLM.
         </div>
