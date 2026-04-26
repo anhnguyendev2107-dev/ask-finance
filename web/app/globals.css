@@ -2604,6 +2604,15 @@ button:disabled {
    ================================================================ */
 
 @media print {
+  /* Mermaid 11 injects hidden temp <svg> / wrapper elements directly into
+     <body> during render/measurement and (on error) leaves a "Syntax error
+     in text" bomb behind. They are positioned off-screen at runtime, but
+     @media print shows everything in the document, so they end up at the
+     tail of every PDF. Restrict printing to our app shell + background. */
+  body > *:not(.shell):not(.bg-glow):not(script):not(style):not(link):not(noscript) {
+    display: none !important;
+  }
+
   /* Force light treatment regardless of current theme. */
   :root,
   :root[data-theme="dark"],
