@@ -2430,22 +2430,26 @@ button:disabled {
 .mermaid-viewport {
   position: relative;
   width: 100%;
-  min-height: 280px;
-  max-height: 520px;
+  /* No max-height: let the diagram render at its natural size so the
+     reader doesn't have to drag/zoom to see the whole thing. The SVG
+     already scales to container width via width:100% on the svg. */
   overflow: hidden;
-  cursor: grab;
+  cursor: default;
   display: grid;
   place-items: center;
-  padding: 28px 22px;
+  padding: 24px 22px;
 }
 
 .mermaid-container.is-fullscreen .mermaid-viewport {
-  max-height: none;
   height: 100%;
   padding: 36px;
 }
 
-.mermaid-viewport.dragging {
+.mermaid-viewport.pannable {
+  cursor: grab;
+}
+
+.mermaid-viewport.pannable.dragging {
   cursor: grabbing;
 }
 
@@ -2459,6 +2463,7 @@ button:disabled {
 }
 
 .mermaid-block svg {
+  width: 100%;
   max-width: 100%;
   height: auto;
   display: block;

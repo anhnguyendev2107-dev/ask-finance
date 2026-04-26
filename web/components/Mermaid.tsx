@@ -138,7 +138,13 @@ function DiagramView({ svg, fullscreen, onExpand, onClose }: DiagramViewProps) {
     setZoom((z) => clamp(+(z + delta * z).toFixed(3), MIN_ZOOM, MAX_ZOOM));
   };
 
+  // Drag-to-pan is only useful when the diagram is bigger than the viewport
+  // (i.e. zoomed in or in fullscreen). At default 1× the SVG already fits, so
+  // panning would just shove a static image around — disable it.
+  const canPan = fullscreen || zoom !== 1;
+
   const onPointerDown = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!canPan) return;
     if (e.button !== 0) return;
     (e.target as Element).setPointerCapture?.(e.pointerId);
     draggingRef.current = { x: e.clientX, y: e.clientY, startPan: { ...pan } };
@@ -184,13 +190,13 @@ function DiagramView({ svg, fullscreen, onExpand, onClose }: DiagramViewProps) {
 
       <div
         ref={containerRef}
-        className={`mermaid-viewport${draggingRef.current ? " dragging" : ""}`}
+        className={`mermaid-viewport${canPan ? " pannable" : ""}${draggingRef.current ? " dragging" : ""}`}
         onWheel={onWheel}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
-        onDoubleClick={reset}
+        onDoubleClick={canPan ? reset : undefined}
       >
         <div
           className="mermaid-block"
