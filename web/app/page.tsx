@@ -4,11 +4,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Chart, type ChartSpec } from "@/components/Chart";
+import { ConversationList, type ConversationSummary } from "@/components/ConversationList";
 import { UserPicker } from "@/components/UserPicker";
 
-const HISTORY_KEY = (userId: string) => `ask-finance:history:${userId}`;
-const HISTORY_VERSION = 1;
-const MAX_HISTORY_MESSAGES = 100;
+// localStorage keys
+const CONVO_KEY = (userId: string) => `ask-finance:conversations:${userId}`;
+const ACTIVE_KEY = (userId: string) => `ask-finance:active-conversation:${userId}`;
+const OLD_HISTORY_KEY = (userId: string) => `ask-finance:history:${userId}`;
+const STORAGE_VERSION = 2;
+const MAX_MESSAGES_PER_CONVO = 200;
+const MAX_CONVERSATIONS_PER_USER = 50;
 
 type Capability = "read_actuals" | "read_budget" | "read_projects" | "export";
 
@@ -51,7 +56,31 @@ interface ChatMessage {
   trace?: AgentTrace;
 }
 
-const newMessageId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+interface Conversation {
+  id: string;
+  user_id: string;
+  title: string;
+  created_at: number;
+  updated_at: number;
+  messages: ChatMessage[];
+}
+
+interface CitationDetail {
+  ref_id: string;            // unique within conversation: msgId-localIdx
+  msg_id: string;
+  local_idx: number;         // 1-based index of citation within its message
+  source: string;
+  filters: string;
+  rows: number;
+  tool: string;
+}
+
+const newId = (prefix: string) =>
+  `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+const newMessageId = () => newId("m");
+const newConversationId = () => newId("c");
+
+const SUGGESTION_ICONS = ["📊", "📈", "🔍", "🎯", "💡", "⚙️"];
 
 const EXAMPLES_BY_ROLE: Record<string, string[]> = {
   "Group CFO": [
@@ -89,16 +118,43 @@ const EXAMPLES_BY_ROLE: Record<string, string[]> = {
 export default function Page() {
   const [users, setUsers] = useState<UserInfo[]>([]);
   const [activeUserId, setActiveUserId] = useState<string>("");
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [activeConversationId, setActiveConversationId] = useState<string>("");
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [leftOpen, setLeftOpen] = useState(false);   // mobile drawer
+  const [rightOpen, setRightOpen] = useState(false); // mobile drawer
   const messagesRef = useRef<HTMLDivElement>(null);
+  const rightPaneRef = useRef<HTMLElement>(null);
+
+  // ---- ESC closes mobile drawers -----------------------------------------
+  useEffect(() => {
+    if (!leftOpen && !rightOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLeftOpen(false);
+        setRightOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [leftOpen, rightOpen]);
+
+  const isMobile = () => typeof window !== "undefined" && window.innerWidth <= 720;
 
   const activeUser = useMemo(
     () => users.find((u) => u.user_id === activeUserId),
     [users, activeUserId],
   );
 
+  const activeConversation = useMemo(
+    () => conversations.find((c) => c.id === activeConversationId),
+    [conversations, activeConversationId],
+  );
+
+  const messages = activeConversation?.messages ?? [];
+
+  // ---- Load users ---------------------------------------------------------
   useEffect(() => {
     fetch("/api/users")
       .then((r) => r.json())
@@ -107,95 +163,160 @@ export default function Page() {
         if (d.users.length) setActiveUserId(d.users[0].user_id);
       })
       .catch(() => {
-        /* swallow — UI will show empty state */
+        /* swallow */
       });
   }, []);
 
-  // Load saved history when the active persona changes (or on first mount).
+  // ---- Load + migrate conversations on user change ------------------------
   useEffect(() => {
     if (!activeUserId) return;
     try {
-      const raw = localStorage.getItem(HISTORY_KEY(activeUserId));
-      if (!raw) {
-        setMessages([]);
-        return;
+      // Migrate old single-history format if present.
+      const oldRaw = localStorage.getItem(OLD_HISTORY_KEY(activeUserId));
+      if (oldRaw) {
+        try {
+          const parsed = JSON.parse(oldRaw) as { v?: number; messages?: ChatMessage[] };
+          if (
+            parsed?.v === 1 &&
+            Array.isArray(parsed.messages) &&
+            parsed.messages.length > 0
+          ) {
+            const migrated: Conversation = {
+              id: newConversationId(),
+              user_id: activeUserId,
+              title: deriveTitle(parsed.messages.find((m) => m.role === "user")?.content),
+              created_at: Date.now(),
+              updated_at: Date.now(),
+              messages: parsed.messages.map((m) => (m.id ? m : { ...m, id: newMessageId() })),
+            };
+            const existingRaw = localStorage.getItem(CONVO_KEY(activeUserId));
+            const existing: Conversation[] = existingRaw ? JSON.parse(existingRaw) : [];
+            const combined = [migrated, ...existing];
+            localStorage.setItem(
+              CONVO_KEY(activeUserId),
+              JSON.stringify({ v: STORAGE_VERSION, items: combined }),
+            );
+          }
+        } catch {
+          /* corrupted old data — ignore */
+        }
+        localStorage.removeItem(OLD_HISTORY_KEY(activeUserId));
       }
-      const parsed = JSON.parse(raw) as { v?: number; messages?: ChatMessage[] };
-      if (parsed?.v === HISTORY_VERSION && Array.isArray(parsed.messages)) {
-        // Back-fill ids for messages stored before they were tracked.
-        setMessages(
-          parsed.messages.map((m) => (m.id ? m : { ...m, id: newMessageId() })),
-        );
+
+      // Load current conversations.
+      const raw = localStorage.getItem(CONVO_KEY(activeUserId));
+      let list: Conversation[] = [];
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw) as
+            | { v?: number; items?: Conversation[] }
+            | Conversation[];
+          if (Array.isArray(parsed)) list = parsed;
+          else if (parsed?.v === STORAGE_VERSION && Array.isArray(parsed.items)) list = parsed.items;
+        } catch {
+          list = [];
+        }
+      }
+
+      // Sort: most-recently-updated first.
+      list.sort((a, b) => b.updated_at - a.updated_at);
+      setConversations(list);
+
+      // Restore last-active conversation, or pick the most recent, or none.
+      const savedActive = localStorage.getItem(ACTIVE_KEY(activeUserId));
+      if (savedActive && list.some((c) => c.id === savedActive)) {
+        setActiveConversationId(savedActive);
+      } else if (list.length > 0) {
+        setActiveConversationId(list[0].id);
       } else {
-        setMessages([]);
+        setActiveConversationId("");
       }
     } catch {
-      setMessages([]);
+      setConversations([]);
+      setActiveConversationId("");
     }
   }, [activeUserId]);
 
-  // Persist on every change. Cap the buffer so a runaway session doesn't blow
-  // out localStorage quota (each persona keeps the last MAX_HISTORY_MESSAGES).
+  // ---- Persist conversations ---------------------------------------------
   useEffect(() => {
     if (!activeUserId) return;
     try {
-      const trimmed = messages.slice(-MAX_HISTORY_MESSAGES);
+      // Cap memory: keep last MAX_CONVERSATIONS_PER_USER, trim each to last N msgs.
+      const trimmed = conversations.slice(0, MAX_CONVERSATIONS_PER_USER).map((c) => ({
+        ...c,
+        messages: c.messages.slice(-MAX_MESSAGES_PER_CONVO),
+      }));
       localStorage.setItem(
-        HISTORY_KEY(activeUserId),
-        JSON.stringify({ v: HISTORY_VERSION, messages: trimmed }),
+        CONVO_KEY(activeUserId),
+        JSON.stringify({ v: STORAGE_VERSION, items: trimmed }),
       );
     } catch {
-      /* quota / disabled — silently ignore */
+      /* quota / disabled */
     }
-  }, [messages, activeUserId]);
+  }, [conversations, activeUserId]);
 
-  const clearHistory = () => {
+  useEffect(() => {
     if (!activeUserId) return;
-    setMessages([]);
     try {
-      localStorage.removeItem(HISTORY_KEY(activeUserId));
+      if (activeConversationId) {
+        localStorage.setItem(ACTIVE_KEY(activeUserId), activeConversationId);
+      } else {
+        localStorage.removeItem(ACTIVE_KEY(activeUserId));
+      }
     } catch {
       /* ignore */
     }
+  }, [activeUserId, activeConversationId]);
+
+  // ---- Conversation helpers ----------------------------------------------
+  const updateConversation = (id: string, fn: (c: Conversation) => Conversation) => {
+    setConversations((cs) => cs.map((c) => (c.id === id ? fn(c) : c)));
   };
 
-  const recentQueries = useMemo(() => {
-    const out: { id: string; text: string }[] = [];
-    for (let i = messages.length - 1; i >= 0 && out.length < 12; i--) {
-      const m = messages[i];
-      if (m.role === "user") out.push({ id: m.id, text: m.content });
-    }
-    return out;
-  }, [messages]);
-
-  const jumpToMessage = (id: string) => {
-    const el = messagesRef.current?.querySelector(
-      `[data-msg-id="${CSS.escape(id)}"]`,
-    ) as HTMLElement | null;
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
-    el.classList.add("highlight-flash");
-    window.setTimeout(() => el.classList.remove("highlight-flash"), 1400);
+  const createConversation = (): string => {
+    const conv: Conversation = {
+      id: newConversationId(),
+      user_id: activeUserId,
+      title: "New conversation",
+      created_at: Date.now(),
+      updated_at: Date.now(),
+      messages: [],
+    };
+    setConversations((cs) => [conv, ...cs]);
+    setActiveConversationId(conv.id);
+    return conv.id;
   };
 
-  useEffect(() => {
-    if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
-    }
-  }, [messages, busy]);
+  const deleteConversation = (id: string) => {
+    setConversations((cs) => {
+      const next = cs.filter((c) => c.id !== id);
+      if (id === activeConversationId) {
+        setActiveConversationId(next[0]?.id ?? "");
+      }
+      return next;
+    });
+  };
 
-  const lastTrace = useMemo(() => {
-    for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].trace) return messages[i].trace!;
-    }
-    return null;
-  }, [messages]);
-
+  // ---- Send query --------------------------------------------------------
   const send = async (queryOverride?: string) => {
     const query = (queryOverride ?? input).trim();
     if (!query || !activeUserId || busy) return;
+
+    let convId = activeConversationId;
+    if (!convId || !conversations.some((c) => c.id === convId)) {
+      convId = createConversation();
+    }
+
     setInput("");
-    setMessages((m) => [...m, { id: newMessageId(), role: "user", content: query }]);
+    const userMsg: ChatMessage = { id: newMessageId(), role: "user", content: query };
+
+    updateConversation(convId, (c) => ({
+      ...c,
+      title: c.messages.length === 0 ? deriveTitle(query) : c.title,
+      messages: [...c.messages, userMsg],
+      updated_at: Date.now(),
+    }));
+
     setBusy(true);
     try {
       const r = await fetch("/api/ask", {
@@ -204,24 +325,28 @@ export default function Page() {
         body: JSON.stringify({ user_id: activeUserId, query }),
       });
       const trace = (await r.json()) as AgentTrace;
-      setMessages((m) => [
-        ...m,
-        {
-          id: newMessageId(),
-          role: "assistant",
-          content: trace.error ? `⚠️ ${trace.error}` : trace.final_text || "(empty response)",
-          trace,
-        },
-      ]);
+      const assistantMsg: ChatMessage = {
+        id: newMessageId(),
+        role: "assistant",
+        content: trace.error ? `⚠️ ${trace.error}` : trace.final_text || "(empty response)",
+        trace,
+      };
+      updateConversation(convId, (c) => ({
+        ...c,
+        messages: [...c.messages, assistantMsg],
+        updated_at: Date.now(),
+      }));
     } catch (err) {
-      setMessages((m) => [
-        ...m,
-        {
-          id: newMessageId(),
-          role: "assistant",
-          content: `⚠️ Network error: ${err instanceof Error ? err.message : String(err)}`,
-        },
-      ]);
+      const errMsg: ChatMessage = {
+        id: newMessageId(),
+        role: "assistant",
+        content: `⚠️ Network error: ${err instanceof Error ? err.message : String(err)}`,
+      };
+      updateConversation(convId, (c) => ({
+        ...c,
+        messages: [...c.messages, errMsg],
+        updated_at: Date.now(),
+      }));
     } finally {
       setBusy(false);
     }
@@ -234,48 +359,105 @@ export default function Page() {
     }
   };
 
+  // ---- Auto-scroll chat to bottom ---------------------------------------
+  useEffect(() => {
+    if (messagesRef.current) {
+      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    }
+  }, [messages.length, busy]);
+
+  // ---- Citations across the active conversation -------------------------
+  const conversationCitations = useMemo<CitationDetail[]>(() => {
+    const out: CitationDetail[] = [];
+    for (const m of messages) {
+      if (m.role !== "assistant" || !m.trace) continue;
+      let local = 1;
+      for (const tc of m.trace.tool_calls) {
+        const r = tc.result as { citations?: { source: string; filters: string; rows: number }[] };
+        if (!Array.isArray(r?.citations)) continue;
+        for (const c of r.citations) {
+          out.push({
+            ref_id: `${m.id}-${local}`,
+            msg_id: m.id,
+            local_idx: local,
+            source: c.source,
+            filters: c.filters,
+            rows: c.rows,
+            tool: tc.name,
+          });
+          local++;
+        }
+      }
+    }
+    return out;
+  }, [messages]);
+
+  const lastTrace = useMemo(() => {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].trace) return messages[i].trace ?? null;
+    }
+    return null;
+  }, [messages]);
+
+  // ---- Cross-pane jumping ------------------------------------------------
+  const jumpToCitation = (refId: string) => {
+    // On mobile the right pane is hidden by default; open it first then
+    // wait a tick so the slide-in animation doesn't fight the scrollIntoView.
+    const onMobile = isMobile();
+    if (onMobile && !rightOpen) setRightOpen(true);
+    window.setTimeout(
+      () => {
+        const card = rightPaneRef.current?.querySelector(
+          `[data-cite-ref="${CSS.escape(refId)}"]`,
+        ) as HTMLElement | null;
+        if (!card) return;
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.classList.add("highlight-flash");
+        window.setTimeout(() => card.classList.remove("highlight-flash"), 1400);
+      },
+      onMobile ? 220 : 0,
+    );
+  };
+
+  // ---- Conversations summary for the sidebar ----------------------------
+  const conversationSummaries: ConversationSummary[] = useMemo(
+    () =>
+      conversations.map((c) => ({
+        id: c.id,
+        title: c.title,
+        message_count: c.messages.length,
+        updated_at: c.updated_at,
+      })),
+    [conversations],
+  );
+
   return (
-    <div className="app">
+    <div className={`app${leftOpen ? " left-open" : ""}${rightOpen ? " right-open" : ""}`}>
+      {(leftOpen || rightOpen) && (
+        <button
+          className="mobile-backdrop"
+          aria-label="Close panel"
+          onClick={() => {
+            setLeftOpen(false);
+            setRightOpen(false);
+          }}
+        />
+      )}
+
       <aside className="left-pane">
         <div className="left-pane-header">
           <div className="section-label">Active user</div>
           <UserPicker users={users} activeId={activeUserId} onChange={setActiveUserId} />
         </div>
 
-        <div className="left-pane-section history-section">
-          <div className="section-label section-label-row">
-            <span>Recent queries</span>
-            {recentQueries.length > 0 && (
-              <button
-                type="button"
-                className="link-btn"
-                onClick={clearHistory}
-                aria-label="Clear chat history for this user"
-              >
-                Clear
-              </button>
-            )}
-          </div>
-          {recentQueries.length === 0 ? (
-            <div className="history-empty">
-              No history yet. Your conversations are saved per user in this browser.
-            </div>
-          ) : (
-            <ul className="history-list">
-              {recentQueries.map((q) => (
-                <li key={q.id}>
-                  <button
-                    type="button"
-                    className="history-item"
-                    onClick={() => jumpToMessage(q.id)}
-                    title={`Jump to: ${q.text}`}
-                  >
-                    {q.text}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="left-pane-section convo-section-wrap">
+          <ConversationList
+            items={conversationSummaries}
+            activeId={activeConversationId}
+            onSelect={setActiveConversationId}
+            onNew={createConversation}
+            onDelete={deleteConversation}
+          />
         </div>
 
         <div className="left-pane-footer">
@@ -286,14 +468,22 @@ export default function Page() {
 
       <main className="center-pane">
         <header className="chat-header">
+          <button
+            type="button"
+            className="mobile-toggle mobile-toggle-left"
+            aria-label="Open conversations"
+            onClick={() => setLeftOpen(true)}
+          >
+            <MenuIcon />
+          </button>
           <div className="header-title">
             {activeUser && (
               <div className={`avatar a-${(users.findIndex((u) => u.user_id === activeUserId) % 5) + 1}`}>
                 {initials(activeUser.name)}
               </div>
             )}
-            <div>
-              <h1>{activeUser ? activeUser.name : "—"}</h1>
+            <div className="header-title-text">
+              <h1>{activeConversation?.title ?? (activeUser ? activeUser.name : "—")}</h1>
               <div className="scope-badge">
                 {activeUser
                   ? `${activeUser.role} · ${activeUser.scope_description}`
@@ -301,26 +491,59 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <span className={`provider-badge ${lastTrace?.provider === "gemini" ? "live" : ""}`}>
-            {lastTrace ? lastTrace.provider : "—"}
-          </span>
+          <div className="chat-header-actions">
+            <span className={`provider-badge ${lastTrace?.provider === "gemini" ? "live" : ""}`}>
+              {lastTrace ? lastTrace.provider : "—"}
+            </span>
+            <button
+              type="button"
+              className="mobile-toggle mobile-toggle-right"
+              aria-label="Open scope and citations"
+              onClick={() => setRightOpen(true)}
+            >
+              <InfoIcon />
+            </button>
+          </div>
         </header>
 
         <div className="messages" ref={messagesRef}>
-          {messages.length === 0 && (
-            <div className="empty-state" style={{ padding: "12px 0" }}>
-              Pick a user on the left, then ask anything about P&L, variance, ROI, or
-              finance terms.
+          {messages.length === 0 && activeUser && (
+            <div className="welcome">
+              <div className="welcome-headline">
+                <span className="welcome-emoji" aria-hidden="true">👋</span>
+                <span>
+                  Hi <strong>{activeUser.name.split(" ")[0]}</strong> — what would you like to look at?
+                </span>
+              </div>
+              <p className="welcome-subtitle">
+                Every answer cites its source and stays inside your scope ({activeUser.scope_description}).
+              </p>
+              <div className="suggestion-grid">
+                {(EXAMPLES_BY_ROLE[activeUser.role] ?? []).map((ex, i) => (
+                  <button
+                    key={ex}
+                    type="button"
+                    className="suggestion-card"
+                    onClick={() => void send(ex)}
+                    disabled={busy}
+                  >
+                    <span className="suggestion-icon" aria-hidden="true">
+                      {SUGGESTION_ICONS[i % SUGGESTION_ICONS.length]}
+                    </span>
+                    <span className="suggestion-text">{ex}</span>
+                    <span className="suggestion-arrow" aria-hidden="true">→</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
           {messages.map((m, i) => {
             const charts = m.trace ? extractCharts(m.trace) : [];
+            const msgCitations = m.role === "assistant"
+              ? conversationCitations.filter((c) => c.msg_id === m.id)
+              : [];
             return (
-              <div
-                key={m.id ?? i}
-                data-msg-id={m.id}
-                className={`message ${m.role}`}
-              >
+              <div key={m.id ?? i} data-msg-id={m.id} className={`message ${m.role}`}>
                 <div className={`msg-avatar ${m.role === "user" ? "user-av" : "assistant-av"}`}>
                   {m.role === "user" && activeUser ? initials(activeUser.name) : "AI"}
                 </div>
@@ -335,6 +558,22 @@ export default function Page() {
                       <Chart key={j} spec={c} />
                     ))}
                   </div>
+                  {msgCitations.length > 0 && (
+                    <div className="msg-citations" aria-label="Citations">
+                      {msgCitations.map((c) => (
+                        <button
+                          key={c.ref_id}
+                          type="button"
+                          className="citation-chip"
+                          onClick={() => jumpToCitation(c.ref_id)}
+                          title={`${c.source} — ${c.filters} (${c.rows} rows)`}
+                        >
+                          <span className="citation-idx">[{c.local_idx}]</span>
+                          <span className="citation-src">{shortSource(c.source)}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -356,13 +595,6 @@ export default function Page() {
         </div>
 
         <div className="composer">
-          <div className="examples">
-            {(activeUser ? EXAMPLES_BY_ROLE[activeUser.role] ?? [] : []).map((ex) => (
-              <button key={ex} className="example" onClick={() => void send(ex)} disabled={busy}>
-                {ex}
-              </button>
-            ))}
-          </div>
           <div className="input-row">
             <textarea
               value={input}
@@ -383,7 +615,7 @@ export default function Page() {
         </div>
       </main>
 
-      <aside className="right-pane">
+      <aside className="right-pane" ref={rightPaneRef}>
         <h3>Visible scope</h3>
         {activeUser ? (
           <div className="scope-card">
@@ -432,14 +664,38 @@ export default function Page() {
         )}
 
         <h3>Citations</h3>
-        {lastTrace ? (
-          <CitationsList trace={lastTrace} />
+        {conversationCitations.length === 0 ? (
+          <div className="empty-state">No citations yet — they appear here when an answer cites sources.</div>
         ) : (
-          <div className="empty-state">No queries yet.</div>
+          <div className="citation-card-list">
+            {conversationCitations.map((c) => (
+              <div
+                key={c.ref_id}
+                data-cite-ref={c.ref_id}
+                className="tool-card citation-card"
+              >
+                <div className="citation-card-head">
+                  <span className="citation-idx-pill">[{c.local_idx}]</span>
+                  <span className="tool-name">{c.source}</span>
+                </div>
+                <div className="tool-input">{c.filters}</div>
+                <div className="citation-meta">
+                  {c.rows} rows · via <code>{c.tool}</code>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </aside>
     </div>
   );
+}
+
+function deriveTitle(query: string | undefined): string {
+  if (!query) return "New conversation";
+  const cleaned = query.trim().replace(/\s+/g, " ");
+  if (cleaned.length <= 48) return cleaned;
+  return cleaned.slice(0, 45).trimEnd() + "…";
 }
 
 function initials(name: string): string {
@@ -449,6 +705,35 @@ function initials(name: string): string {
     .slice(0, 2)
     .map((s) => s[0]?.toUpperCase() ?? "")
     .join("");
+}
+
+function MenuIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+
+function InfoIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <line x1="12" y1="11" x2="12" y2="17" />
+      <line x1="12" y1="7" x2="12" y2="7.01" />
+    </svg>
+  );
+}
+
+function shortSource(source: string): string {
+  // "SAP-ECC (sap_gl_actuals.csv)" → "SAP-ECC"; "Internal Finance Glossary" → "Glossary"
+  if (/^Internal Finance Glossary/i.test(source)) return "Glossary";
+  if (/^Oracle HFM/i.test(source)) return "HFM";
+  if (/^PPM-System/i.test(source)) return "PPM";
+  const match = source.match(/^([A-Za-z0-9-]+)/);
+  return match ? match[1] : source;
 }
 
 function extractCharts(trace: AgentTrace): ChartSpec[] {
@@ -468,27 +753,4 @@ function extractCharts(trace: AgentTrace): ChartSpec[] {
     seen.set(key, r.chart);
   }
   return Array.from(seen.values());
-}
-
-function CitationsList({ trace }: { trace: AgentTrace }) {
-  const citations: { source: string; filters: string; rows: number }[] = [];
-  for (const tc of trace.tool_calls) {
-    const r = tc.result as { citations?: { source: string; filters: string; rows: number }[] };
-    if (r?.citations) citations.push(...r.citations);
-  }
-  if (citations.length === 0) {
-    return <div className="empty-state">No citations.</div>;
-  }
-  return (
-    <>
-      {citations.map((c, i) => (
-        <div key={i} className="tool-card">
-          <div className="tool-name">{c.source}</div>
-          <div className="tool-input">
-            {c.filters} · {c.rows} rows
-          </div>
-        </div>
-      ))}
-    </>
-  );
 }
