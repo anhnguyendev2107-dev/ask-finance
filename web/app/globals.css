@@ -1200,8 +1200,8 @@ button:disabled {
 .message {
   display: flex;
   gap: 10px;
-  max-width: min(820px, 100%);
   min-width: 0;             /* let inner ellipsise instead of overflowing */
+  width: 70%;               /* 70% of the messages column for both roles */
 }
 
 .message.user {
@@ -1211,6 +1211,13 @@ button:disabled {
 
 .message.assistant {
   align-self: flex-start;
+}
+
+/* On phones the column is already narrow — let messages take the full row. */
+@media (max-width: 720px) {
+  .message {
+    width: 100%;
+  }
 }
 
 .msg-avatar {
