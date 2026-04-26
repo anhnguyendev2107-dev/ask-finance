@@ -467,7 +467,7 @@ export const TOOL_SCHEMAS = [
   {
     name: "generate_chart",
     description:
-      "Render a chart inline in the response. Call AFTER you have the data from get_metric_trend or get_project_roi (or any other source). The chart is rendered as SVG by the UI; you do not need to draw anything yourself. Prefer line charts for time series, bar charts for categorical comparisons.",
+      "Render a chart inline in the response. Call AT MOST ONCE per answer, AFTER you have the data from get_metric_trend / get_project_roi / get_pnl_summary. Always include chart_type ('line' for time series, 'bar' for categorical comparisons). Do not call again to refine — pass the complete spec on the first call.",
     input_schema: {
       type: "object",
       properties: {

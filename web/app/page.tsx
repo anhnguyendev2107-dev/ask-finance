@@ -357,14 +357,22 @@ function initials(name: string): string {
 }
 
 function extractCharts(trace: AgentTrace): ChartSpec[] {
-  const charts: ChartSpec[] = [];
+  // Models occasionally call generate_chart twice with effectively the same
+  // payload (one missing chart_type, one with it). Dedupe by a content key
+  // built from title + chart_type + the y-series, keeping the most-recent
+  // call so any refinement wins.
+  const seen = new Map<string, ChartSpec>();
   for (const tc of trace.tool_calls) {
     const r = tc.result as { chart?: ChartSpec };
-    if (r?.chart && Array.isArray(r.chart.series) && r.chart.series.length > 0) {
-      charts.push(r.chart);
-    }
+    if (!r?.chart || !Array.isArray(r.chart.series) || r.chart.series.length === 0) continue;
+    const key = [
+      r.chart.title ?? "",
+      r.chart.type ?? "line",
+      r.chart.series.map((p) => `${p.x}:${p.y}`).join("|"),
+    ].join("§");
+    seen.set(key, r.chart);
   }
-  return charts;
+  return Array.from(seen.values());
 }
 
 function CitationsList({ trace }: { trace: AgentTrace }) {

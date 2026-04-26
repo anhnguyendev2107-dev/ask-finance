@@ -17,16 +17,39 @@ const PAD = { left: 52, right: 18, top: 12, bottom: 38 };
 export function Chart({ spec }: { spec: ChartSpec }) {
   const plot = useMemo(() => {
     const ys = spec.series.map((p) => p.y);
-    const yMin = Math.min(0, ...ys);
-    const yMax = Math.max(...ys, 0);
-    const ticks = niceTicksFor(yMin, yMax, 4);
-    const yLo = ticks[0];
-    const yHi = ticks[ticks.length - 1];
-    const span = yHi - yLo || 1;
+    const dataMin = Math.min(...ys);
+    const dataMax = Math.max(...ys);
+
+    // Y-axis range strategy:
+    //   - Data crosses 0          → use [dataMin, dataMax] (e.g. variance)
+    //   - All same sign, big range → include 0 baseline (gives magnitude context)
+    //   - All same sign, narrow    → tight zoom with 15% padding (e.g. % margin)
+    let yLo: number, yHi: number;
+    if (dataMin < 0 && dataMax > 0) {
+      yLo = dataMin;
+      yHi = dataMax;
+    } else {
+      const reference = Math.max(Math.abs(dataMin), Math.abs(dataMax));
+      const range = dataMax - dataMin;
+      const wide = reference > 0 && range / reference > 0.5;
+      if (wide) {
+        yLo = Math.min(0, dataMin);
+        yHi = Math.max(0, dataMax);
+      } else {
+        const pad = (range || reference * 0.1) * 0.15;
+        yLo = dataMin - pad;
+        yHi = dataMax + pad;
+      }
+    }
+
+    const ticks = niceTicksFor(yLo, yHi, 4);
+    const tLo = ticks[0];
+    const tHi = ticks[ticks.length - 1];
+    const span = tHi - tLo || 1;
 
     const innerW = W - PAD.left - PAD.right;
     const innerH = H - PAD.top - PAD.bottom;
-    const yToPx = (y: number) => PAD.top + innerH - ((y - yLo) / span) * innerH;
+    const yToPx = (y: number) => PAD.top + innerH - ((y - tLo) / span) * innerH;
 
     const points = spec.series.map((p, i) => ({
       x:
