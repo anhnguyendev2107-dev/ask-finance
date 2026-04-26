@@ -23,6 +23,26 @@ npm run dev                     # http://localhost:3000
 To use a real LLM, set `GEMINI_API_KEY` in `.env.local` (get one from
 https://aistudio.google.com/apikey). Default model: `gemini-2.5-flash`.
 
+### Multiple keys (recommended for free tier)
+
+The Gemini free tier caps each key at ~5 requests/minute. To survive a demo
+session, configure a key pool — the agent rotates round-robin and cools any key
+that hits 429 for ~45 seconds:
+
+```env
+# preferred — comma-separated list
+GEMINI_API_KEYS=key_aaa,key_bbb,key_ccc
+
+# alternative — numbered
+GEMINI_API_KEY_1=...
+GEMINI_API_KEY_2=...
+GEMINI_API_KEY_3=...
+```
+
+Three keys ≈ 15 RPM. Each request can rotate **mid-conversation** — the
+conversation state lives in the request body, not the client, so a turn-2
+fallback to a fresh key is transparent.
+
 ## Deploy to Vercel
 
 ### Option A — CLI (fastest)

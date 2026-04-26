@@ -67,4 +67,6 @@ export interface AgentTrace {
   final_text: string;
   error: string | null;
   provider: "gemini" | "mock";
+  /** Pool indices of API keys that served this run (Gemini provider only). */
+  keys_used?: number[];
 }

@@ -1,5 +1,6 @@
 import { GoogleGenAI, type Content, type FunctionDeclaration, type Part } from "@google/genai";
 import { dataCatalog } from "./data-loader";
+import { classifyProviderError, geminiKeyPool } from "./key-pool";
 import { can, scopeDescription } from "./rbac";
 import { runTool, TOOL_SCHEMAS } from "./tools";
 import type { AgentTrace, RBACContext } from "./types";
@@ -57,20 +58,62 @@ function geminiFunctionDeclarations(): FunctionDeclaration[] {
 // ---------------------------------------------------------------------------
 // Gemini provider
 // ---------------------------------------------------------------------------
+
+/**
+ * Call Gemini with automatic API-key rotation. On 429 / quota / server errors
+ * the failing key is cooled down (see ApiKeyPool) and the request is retried
+ * against the next eligible key. The conversation state lives in `contents`,
+ * not in the client, so rotating keys mid-loop is transparent.
+ *
+ * Throws only when EVERY key has been tried and none succeeded.
+ */
+async function generateWithRotation(req: Parameters<GoogleGenAI["models"]["generateContent"]>[0]) {
+  const pool = geminiKeyPool();
+  if (pool.size() === 0) {
+    throw new Error("No Gemini API keys configured (set GEMINI_API_KEY or GEMINI_API_KEYS).");
+  }
+
+  const tried = new Set<string>();
+  let lastErr: unknown = null;
+
+  while (tried.size < pool.size()) {
+    const picked = pool.pick(tried);
+    if (!picked) break;
+    tried.add(picked.key);
+
+    const ai = new GoogleGenAI({ apiKey: picked.key });
+    try {
+      const resp = await ai.models.generateContent(req);
+      pool.reportSuccess(picked.key);
+      return { resp, keyIndex: picked.index };
+    } catch (err) {
+      lastErr = err;
+      const kind = classifyProviderError(err);
+      pool.reportFailure(picked.key, kind);
+      if (kind === "non_retryable") throw err;
+      // else: try the next key
+    }
+  }
+
+  const msg = lastErr instanceof Error ? lastErr.message : String(lastErr);
+  throw new Error(`All ${pool.size()} Gemini key(s) exhausted: ${msg}`);
+}
+
 async function runWithGemini(ctx: RBACContext, query: string, trace: AgentTrace): Promise<AgentTrace> {
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
   const systemInstruction = buildSystemPrompt(ctx);
   const tools = [{ functionDeclarations: geminiFunctionDeclarations() }];
 
   const contents: Content[] = [{ role: "user", parts: [{ text: query }] }];
+  const keysUsed = new Set<number>();
 
   for (let i = 0; i < MAX_TOOL_ITERATIONS; i++) {
     trace.iterations = i + 1;
-    const resp = await ai.models.generateContent({
+    const { resp, keyIndex } = await generateWithRotation({
       model: DEFAULT_MODEL,
       contents,
       config: { systemInstruction, tools },
     });
+    keysUsed.add(keyIndex);
 
     const parts: Part[] = resp.candidates?.[0]?.content?.parts ?? [];
     const functionCalls = parts.filter((p) => p.functionCall);
@@ -82,6 +125,7 @@ async function runWithGemini(ctx: RBACContext, query: string, trace: AgentTrace)
         .join("")
         .trim();
       trace.final_text = text;
+      trace.keys_used = Array.from(keysUsed).sort((a, b) => a - b);
       return trace;
     }
 
@@ -102,6 +146,7 @@ async function runWithGemini(ctx: RBACContext, query: string, trace: AgentTrace)
     contents.push({ role: "user", parts: responseParts });
   }
 
+  trace.keys_used = Array.from(keysUsed).sort((a, b) => a - b);
   trace.error = `Hit max iteration cap (${MAX_TOOL_ITERATIONS}).`;
   return trace;
 }
